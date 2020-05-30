@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-memcache.git",
-        "sha": "e34e2b1a2b47476cb6a0dcd932dcfd030018936f"
+        "sha": "bec03204329a93e45a718d78859b2e1e0a57be5f"
       }
     },
     {
@@ -19,7 +19,14 @@
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "71b8a272549c06b5768d00fa48d3ae990e871bec"
+        "sha": "ffe10407ee2f261c799fb0d01bf32a8abc67ed1e"
+      }
+    },
+    {
+      "git": {
+        "name": "synthtool",
+        "remote": "https://github.com/googleapis/synthtool.git",
+        "sha": "ffe10407ee2f261c799fb0d01bf32a8abc67ed1e"
       }
     }
   ],
