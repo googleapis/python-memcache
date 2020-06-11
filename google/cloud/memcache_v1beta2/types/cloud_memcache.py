@@ -75,8 +75,8 @@ class Instance(proto.Message):
             resources
         authorized_network (str):
             Optional. The full name of the Google Compute Engine
-            `network </compute/docs/networks-and-firewalls#networks>`__
-            to which the instance is connected. If left unspecified, the
+            `network <https://cloud.google.com/vpc/docs/vpc>`__ to which
+            the instance is connected. If left unspecified, the
             ``default`` network will be used.
         zones (Sequence[str]):
             Optional. Zones where Memcached nodes should
