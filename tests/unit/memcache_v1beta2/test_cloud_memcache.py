@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 
+import os
 from unittest import mock
 
 import grpc
@@ -27,6 +28,7 @@ from google.api_core import future
 from google.api_core import grpc_helpers
 from google.api_core import operations_v1
 from google.auth import credentials
+from google.auth.exceptions import MutualTLSChannelError
 from google.cloud.memcache_v1beta2.services.cloud_memcache import CloudMemcacheClient
 from google.cloud.memcache_v1beta2.services.cloud_memcache import pagers
 from google.cloud.memcache_v1beta2.services.cloud_memcache import transports
@@ -85,6 +87,14 @@ def test_cloud_memcache_client_from_service_account_file():
         assert client._transport._host == "memcache.googleapis.com:443"
 
 
+def test_cloud_memcache_client_get_transport_class():
+    transport = CloudMemcacheClient.get_transport_class()
+    assert transport == transports.CloudMemcacheGrpcTransport
+
+    transport = CloudMemcacheClient.get_transport_class("grpc")
+    assert transport == transports.CloudMemcacheGrpcTransport
+
+
 def test_cloud_memcache_client_client_options():
     # Check that if channel is provided we won't create a new one.
     with mock.patch(
@@ -96,19 +106,14 @@ def test_cloud_memcache_client_client_options():
         client = CloudMemcacheClient(transport=transport)
         gtc.assert_not_called()
 
-    # Check mTLS is not triggered with empty client options.
-    options = client_options.ClientOptions()
+    # Check that if channel is provided via str we will create a new one.
     with mock.patch(
         "google.cloud.memcache_v1beta2.services.cloud_memcache.CloudMemcacheClient.get_transport_class"
     ) as gtc:
-        transport = gtc.return_value = mock.MagicMock()
-        client = CloudMemcacheClient(client_options=options)
-        transport.assert_called_once_with(
-            credentials=None, host=client.DEFAULT_ENDPOINT
-        )
+        client = CloudMemcacheClient(transport="grpc")
+        gtc.assert_called()
 
-    # Check mTLS is not triggered if api_endpoint is provided but
-    # client_cert_source is None.
+    # Check the case api_endpoint is provided.
     options = client_options.ClientOptions(api_endpoint="squid.clam.whelk")
     with mock.patch(
         "google.cloud.memcache_v1beta2.services.cloud_memcache.transports.CloudMemcacheGrpcTransport.__init__"
@@ -116,13 +121,45 @@ def test_cloud_memcache_client_client_options():
         grpc_transport.return_value = None
         client = CloudMemcacheClient(client_options=options)
         grpc_transport.assert_called_once_with(
-            api_mtls_endpoint=None,
+            api_mtls_endpoint="squid.clam.whelk",
             client_cert_source=None,
             credentials=None,
             host="squid.clam.whelk",
         )
 
-    # Check mTLS is triggered if client_cert_source is provided.
+    # Check the case api_endpoint is not provided and GOOGLE_API_USE_MTLS is
+    # "never".
+    os.environ["GOOGLE_API_USE_MTLS"] = "never"
+    with mock.patch(
+        "google.cloud.memcache_v1beta2.services.cloud_memcache.transports.CloudMemcacheGrpcTransport.__init__"
+    ) as grpc_transport:
+        grpc_transport.return_value = None
+        client = CloudMemcacheClient()
+        grpc_transport.assert_called_once_with(
+            api_mtls_endpoint=client.DEFAULT_ENDPOINT,
+            client_cert_source=None,
+            credentials=None,
+            host=client.DEFAULT_ENDPOINT,
+        )
+
+    # Check the case api_endpoint is not provided and GOOGLE_API_USE_MTLS is
+    # "always".
+    os.environ["GOOGLE_API_USE_MTLS"] = "always"
+    with mock.patch(
+        "google.cloud.memcache_v1beta2.services.cloud_memcache.transports.CloudMemcacheGrpcTransport.__init__"
+    ) as grpc_transport:
+        grpc_transport.return_value = None
+        client = CloudMemcacheClient()
+        grpc_transport.assert_called_once_with(
+            api_mtls_endpoint=client.DEFAULT_MTLS_ENDPOINT,
+            client_cert_source=None,
+            credentials=None,
+            host=client.DEFAULT_MTLS_ENDPOINT,
+        )
+
+    # Check the case api_endpoint is not provided, GOOGLE_API_USE_MTLS is
+    # "auto", and client_cert_source is provided.
+    os.environ["GOOGLE_API_USE_MTLS"] = "auto"
     options = client_options.ClientOptions(
         client_cert_source=client_cert_source_callback
     )
@@ -135,24 +172,54 @@ def test_cloud_memcache_client_client_options():
             api_mtls_endpoint=client.DEFAULT_MTLS_ENDPOINT,
             client_cert_source=client_cert_source_callback,
             credentials=None,
-            host=client.DEFAULT_ENDPOINT,
+            host=client.DEFAULT_MTLS_ENDPOINT,
         )
 
-    # Check mTLS is triggered if api_endpoint and client_cert_source are provided.
-    options = client_options.ClientOptions(
-        api_endpoint="squid.clam.whelk", client_cert_source=client_cert_source_callback
-    )
+    # Check the case api_endpoint is not provided, GOOGLE_API_USE_MTLS is
+    # "auto", and default_client_cert_source is provided.
+    os.environ["GOOGLE_API_USE_MTLS"] = "auto"
     with mock.patch(
         "google.cloud.memcache_v1beta2.services.cloud_memcache.transports.CloudMemcacheGrpcTransport.__init__"
     ) as grpc_transport:
-        grpc_transport.return_value = None
-        client = CloudMemcacheClient(client_options=options)
-        grpc_transport.assert_called_once_with(
-            api_mtls_endpoint="squid.clam.whelk",
-            client_cert_source=client_cert_source_callback,
-            credentials=None,
-            host="squid.clam.whelk",
-        )
+        with mock.patch(
+            "google.auth.transport.mtls.has_default_client_cert_source",
+            return_value=True,
+        ):
+            grpc_transport.return_value = None
+            client = CloudMemcacheClient()
+            grpc_transport.assert_called_once_with(
+                api_mtls_endpoint=client.DEFAULT_MTLS_ENDPOINT,
+                client_cert_source=None,
+                credentials=None,
+                host=client.DEFAULT_MTLS_ENDPOINT,
+            )
+
+    # Check the case api_endpoint is not provided, GOOGLE_API_USE_MTLS is
+    # "auto", but client_cert_source and default_client_cert_source are None.
+    os.environ["GOOGLE_API_USE_MTLS"] = "auto"
+    with mock.patch(
+        "google.cloud.memcache_v1beta2.services.cloud_memcache.transports.CloudMemcacheGrpcTransport.__init__"
+    ) as grpc_transport:
+        with mock.patch(
+            "google.auth.transport.mtls.has_default_client_cert_source",
+            return_value=False,
+        ):
+            grpc_transport.return_value = None
+            client = CloudMemcacheClient()
+            grpc_transport.assert_called_once_with(
+                api_mtls_endpoint=client.DEFAULT_ENDPOINT,
+                client_cert_source=None,
+                credentials=None,
+                host=client.DEFAULT_ENDPOINT,
+            )
+
+    # Check the case api_endpoint is not provided and GOOGLE_API_USE_MTLS has
+    # unsupported value.
+    os.environ["GOOGLE_API_USE_MTLS"] = "Unsupported"
+    with pytest.raises(MutualTLSChannelError):
+        client = CloudMemcacheClient()
+
+    del os.environ["GOOGLE_API_USE_MTLS"]
 
 
 def test_cloud_memcache_client_client_options_from_dict():
@@ -164,7 +231,7 @@ def test_cloud_memcache_client_client_options_from_dict():
             client_options={"api_endpoint": "squid.clam.whelk"}
         )
         grpc_transport.assert_called_once_with(
-            api_mtls_endpoint=None,
+            api_mtls_endpoint="squid.clam.whelk",
             client_cert_source=None,
             credentials=None,
             host="squid.clam.whelk",
@@ -206,11 +273,13 @@ def test_list_instances_field_headers():
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
-    request = cloud_memcache.ListInstancesRequest(parent="parent/value")
+    request = cloud_memcache.ListInstancesRequest()
+    request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client._transport.list_instances), "__call__") as call:
         call.return_value = cloud_memcache.ListInstancesResponse()
+
         client.list_instances(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -233,7 +302,7 @@ def test_list_instances_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.list_instances(parent="parent_value")
+        client.list_instances(parent="parent_value")
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -361,11 +430,13 @@ def test_get_instance_field_headers():
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
-    request = cloud_memcache.GetInstanceRequest(name="name/value")
+    request = cloud_memcache.GetInstanceRequest()
+    request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client._transport.get_instance), "__call__") as call:
         call.return_value = cloud_memcache.Instance()
+
         client.get_instance(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -388,7 +459,7 @@ def test_get_instance_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.get_instance(name="name_value")
+        client.get_instance(name="name_value")
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -432,6 +503,30 @@ def test_create_instance(transport: str = "grpc"):
     assert isinstance(response, future.Future)
 
 
+def test_create_instance_field_headers():
+    client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = cloud_memcache.CreateInstanceRequest()
+    request.parent = "parent/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client._transport.create_instance), "__call__") as call:
+        call.return_value = operations_pb2.Operation(name="operations/op")
+
+        client.create_instance(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "parent=parent/value") in kw["metadata"]
+
+
 def test_create_instance_flattened():
     client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
 
@@ -442,7 +537,7 @@ def test_create_instance_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.create_instance(
+        client.create_instance(
             parent="parent_value",
             instance_id="instance_id_value",
             resource=cloud_memcache.Instance(name="name_value"),
@@ -497,6 +592,32 @@ def test_update_instance(transport: str = "grpc"):
     assert isinstance(response, future.Future)
 
 
+def test_update_instance_field_headers():
+    client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = cloud_memcache.UpdateInstanceRequest()
+    request.resource.name = "resource.name/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client._transport.update_instance), "__call__") as call:
+        call.return_value = operations_pb2.Operation(name="operations/op")
+
+        client.update_instance(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "resource.name=resource.name/value") in kw[
+        "metadata"
+    ]
+
+
 def test_update_instance_flattened():
     client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
 
@@ -507,7 +628,7 @@ def test_update_instance_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.update_instance(
+        client.update_instance(
             update_mask=field_mask.FieldMask(paths=["paths_value"]),
             resource=cloud_memcache.Instance(name="name_value"),
         )
@@ -561,6 +682,32 @@ def test_update_parameters(transport: str = "grpc"):
     assert isinstance(response, future.Future)
 
 
+def test_update_parameters_field_headers():
+    client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = cloud_memcache.UpdateParametersRequest()
+    request.name = "name/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._transport.update_parameters), "__call__"
+    ) as call:
+        call.return_value = operations_pb2.Operation(name="operations/op")
+
+        client.update_parameters(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "name=name/value") in kw["metadata"]
+
+
 def test_update_parameters_flattened():
     client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
 
@@ -573,7 +720,7 @@ def test_update_parameters_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.update_parameters(
+        client.update_parameters(
             name="name_value",
             update_mask=field_mask.FieldMask(paths=["paths_value"]),
             parameters=cloud_memcache.MemcacheParameters(id="id_value"),
@@ -628,6 +775,30 @@ def test_delete_instance(transport: str = "grpc"):
     assert isinstance(response, future.Future)
 
 
+def test_delete_instance_field_headers():
+    client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = cloud_memcache.DeleteInstanceRequest()
+    request.name = "name/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(type(client._transport.delete_instance), "__call__") as call:
+        call.return_value = operations_pb2.Operation(name="operations/op")
+
+        client.delete_instance(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "name=name/value") in kw["metadata"]
+
+
 def test_delete_instance_flattened():
     client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
 
@@ -638,7 +809,7 @@ def test_delete_instance_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.delete_instance(name="name_value")
+        client.delete_instance(name="name_value")
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -686,6 +857,32 @@ def test_apply_parameters(transport: str = "grpc"):
     assert isinstance(response, future.Future)
 
 
+def test_apply_parameters_field_headers():
+    client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = cloud_memcache.ApplyParametersRequest()
+    request.name = "name/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client._transport.apply_parameters), "__call__"
+    ) as call:
+        call.return_value = operations_pb2.Operation(name="operations/op")
+
+        client.apply_parameters(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "name=name/value") in kw["metadata"]
+
+
 def test_apply_parameters_flattened():
     client = CloudMemcacheClient(credentials=credentials.AnonymousCredentials())
 
@@ -698,7 +895,7 @@ def test_apply_parameters_flattened():
 
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        response = client.apply_parameters(
+        client.apply_parameters(
             name="name_value", node_ids=["node_ids_value"], apply_all=True
         )
 
@@ -788,13 +985,23 @@ def test_cloud_memcache_auth_adc():
         )
 
 
+def test_cloud_memcache_transport_auth_adc():
+    # If credentials and host are not provided, the transport class should use
+    # ADC credentials.
+    with mock.patch.object(auth, "default") as adc:
+        adc.return_value = (credentials.AnonymousCredentials(), None)
+        transports.CloudMemcacheGrpcTransport(host="squid.clam.whelk")
+        adc.assert_called_once_with(
+            scopes=("https://www.googleapis.com/auth/cloud-platform",)
+        )
+
+
 def test_cloud_memcache_host_no_port():
     client = CloudMemcacheClient(
         credentials=credentials.AnonymousCredentials(),
         client_options=client_options.ClientOptions(
             api_endpoint="memcache.googleapis.com"
         ),
-        transport="grpc",
     )
     assert client._transport._host == "memcache.googleapis.com:443"
 
@@ -805,7 +1012,6 @@ def test_cloud_memcache_host_with_port():
         client_options=client_options.ClientOptions(
             api_endpoint="memcache.googleapis.com:8000"
         ),
-        transport="grpc",
     )
     assert client._transport._host == "memcache.googleapis.com:8000"
 

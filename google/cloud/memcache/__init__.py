@@ -15,7 +15,6 @@
 # limitations under the License.
 #
 
-
 from google.cloud.memcache_v1beta2.services.cloud_memcache.client import (
     CloudMemcacheClient,
 )
