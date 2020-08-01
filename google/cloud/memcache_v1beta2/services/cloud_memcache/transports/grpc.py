@@ -218,7 +218,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
         # have one.
         if not hasattr(self, "_grpc_channel"):
             self._grpc_channel = self.create_channel(
-                self._host, credentials=self._credentials
+                self._host, credentials=self._credentials,
             )
 
         # Return the channel from cache.
@@ -242,7 +242,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def list_instances(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.ListInstancesRequest], cloud_memcache.ListInstancesResponse
     ]:
@@ -270,7 +270,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def get_instance(
-        self
+        self,
     ) -> Callable[[cloud_memcache.GetInstanceRequest], cloud_memcache.Instance]:
         r"""Return a callable for the get instance method over gRPC.
 
@@ -296,7 +296,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def create_instance(
-        self
+        self,
     ) -> Callable[[cloud_memcache.CreateInstanceRequest], operations.Operation]:
         r"""Return a callable for the create instance method over gRPC.
 
@@ -323,7 +323,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def update_instance(
-        self
+        self,
     ) -> Callable[[cloud_memcache.UpdateInstanceRequest], operations.Operation]:
         r"""Return a callable for the update instance method over gRPC.
 
@@ -350,7 +350,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def update_parameters(
-        self
+        self,
     ) -> Callable[[cloud_memcache.UpdateParametersRequest], operations.Operation]:
         r"""Return a callable for the update parameters method over gRPC.
 
@@ -379,7 +379,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def delete_instance(
-        self
+        self,
     ) -> Callable[[cloud_memcache.DeleteInstanceRequest], operations.Operation]:
         r"""Return a callable for the delete instance method over gRPC.
 
@@ -405,7 +405,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
 
     @property
     def apply_parameters(
-        self
+        self,
     ) -> Callable[[cloud_memcache.ApplyParametersRequest], operations.Operation]:
         r"""Return a callable for the apply parameters method over gRPC.
 

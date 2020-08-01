@@ -32,7 +32,7 @@ from google.longrunning import operations_pb2 as operations  # type: ignore
 
 try:
     _client_info = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution("google-cloud-memcache").version
+        gapic_version=pkg_resources.get_distribution("google-cloud-memcache",).version,
     )
 except pkg_resources.DistributionNotFound:
     _client_info = gapic_v1.client_info.ClientInfo()
@@ -101,25 +101,25 @@ class CloudMemcacheTransport(abc.ABC):
         # Precompute the wrapped methods.
         self._wrapped_methods = {
             self.list_instances: gapic_v1.method.wrap_method(
-                self.list_instances, default_timeout=None, client_info=_client_info
+                self.list_instances, default_timeout=None, client_info=_client_info,
             ),
             self.get_instance: gapic_v1.method.wrap_method(
-                self.get_instance, default_timeout=None, client_info=_client_info
+                self.get_instance, default_timeout=None, client_info=_client_info,
             ),
             self.create_instance: gapic_v1.method.wrap_method(
-                self.create_instance, default_timeout=None, client_info=_client_info
+                self.create_instance, default_timeout=None, client_info=_client_info,
             ),
             self.update_instance: gapic_v1.method.wrap_method(
-                self.update_instance, default_timeout=None, client_info=_client_info
+                self.update_instance, default_timeout=None, client_info=_client_info,
             ),
             self.update_parameters: gapic_v1.method.wrap_method(
-                self.update_parameters, default_timeout=None, client_info=_client_info
+                self.update_parameters, default_timeout=None, client_info=_client_info,
             ),
             self.delete_instance: gapic_v1.method.wrap_method(
-                self.delete_instance, default_timeout=None, client_info=_client_info
+                self.delete_instance, default_timeout=None, client_info=_client_info,
             ),
             self.apply_parameters: gapic_v1.method.wrap_method(
-                self.apply_parameters, default_timeout=None, client_info=_client_info
+                self.apply_parameters, default_timeout=None, client_info=_client_info,
             ),
         }
 
@@ -130,7 +130,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def list_instances(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.ListInstancesRequest],
         typing.Union[
@@ -142,7 +142,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def get_instance(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.GetInstanceRequest],
         typing.Union[
@@ -153,7 +153,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def create_instance(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.CreateInstanceRequest],
         typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
@@ -162,7 +162,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def update_instance(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.UpdateInstanceRequest],
         typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
@@ -171,7 +171,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def update_parameters(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.UpdateParametersRequest],
         typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
@@ -180,7 +180,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def delete_instance(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.DeleteInstanceRequest],
         typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
@@ -189,7 +189,7 @@ class CloudMemcacheTransport(abc.ABC):
 
     @property
     def apply_parameters(
-        self
+        self,
     ) -> typing.Callable[
         [cloud_memcache.ApplyParametersRequest],
         typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
