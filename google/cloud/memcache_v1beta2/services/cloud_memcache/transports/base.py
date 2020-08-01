@@ -17,8 +17,12 @@
 
 import abc
 import typing
+import pkg_resources
 
 from google import auth
+from google.api_core import exceptions  # type: ignore
+from google.api_core import gapic_v1  # type: ignore
+from google.api_core import retry as retries  # type: ignore
 from google.api_core import operations_v1  # type: ignore
 from google.auth import credentials  # type: ignore
 
@@ -26,7 +30,15 @@ from google.cloud.memcache_v1beta2.types import cloud_memcache
 from google.longrunning import operations_pb2 as operations  # type: ignore
 
 
-class CloudMemcacheTransport(metaclass=abc.ABCMeta):
+try:
+    _client_info = gapic_v1.client_info.ClientInfo(
+        gapic_version=pkg_resources.get_distribution("google-cloud-memcache").version
+    )
+except pkg_resources.DistributionNotFound:
+    _client_info = gapic_v1.client_info.ClientInfo()
+
+
+class CloudMemcacheTransport(abc.ABC):
     """Abstract transport class for CloudMemcache."""
 
     AUTH_SCOPES = ("https://www.googleapis.com/auth/cloud-platform",)
@@ -36,6 +48,10 @@ class CloudMemcacheTransport(metaclass=abc.ABCMeta):
         *,
         host: str = "memcache.googleapis.com",
         credentials: credentials.Credentials = None,
+        credentials_file: typing.Optional[str] = None,
+        scopes: typing.Optional[typing.Sequence[str]] = AUTH_SCOPES,
+        quota_project_id: typing.Optional[str] = None,
+        **kwargs,
     ) -> None:
         """Instantiate the transport.
 
@@ -46,6 +62,12 @@ class CloudMemcacheTransport(metaclass=abc.ABCMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
+            credentials_file (Optional[str]): A file with credentials that can
+                be loaded with :func:`google.auth.load_credentials_from_file`.
+                This argument is mutually exclusive with credentials.
+            scope (Optional[Sequence[str]]): A list of scopes.
+            quota_project_id (Optional[str]): An optional project to use for billing
+                and quota.
         """
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
         if ":" not in host:
@@ -54,62 +76,125 @@ class CloudMemcacheTransport(metaclass=abc.ABCMeta):
 
         # If no credentials are provided, then determine the appropriate
         # defaults.
-        if credentials is None:
-            credentials, _ = auth.default(scopes=self.AUTH_SCOPES)
+        if credentials and credentials_file:
+            raise exceptions.DuplicateCredentialArgs(
+                "'credentials_file' and 'credentials' are mutually exclusive"
+            )
+
+        if credentials_file is not None:
+            credentials, _ = auth.load_credentials_from_file(
+                credentials_file, scopes=scopes, quota_project_id=quota_project_id
+            )
+
+        elif credentials is None:
+            credentials, _ = auth.default(
+                scopes=scopes, quota_project_id=quota_project_id
+            )
 
         # Save the credentials.
         self._credentials = credentials
 
+        # Lifted into its own function so it can be stubbed out during tests.
+        self._prep_wrapped_messages()
+
+    def _prep_wrapped_messages(self):
+        # Precompute the wrapped methods.
+        self._wrapped_methods = {
+            self.list_instances: gapic_v1.method.wrap_method(
+                self.list_instances, default_timeout=None, client_info=_client_info
+            ),
+            self.get_instance: gapic_v1.method.wrap_method(
+                self.get_instance, default_timeout=None, client_info=_client_info
+            ),
+            self.create_instance: gapic_v1.method.wrap_method(
+                self.create_instance, default_timeout=None, client_info=_client_info
+            ),
+            self.update_instance: gapic_v1.method.wrap_method(
+                self.update_instance, default_timeout=None, client_info=_client_info
+            ),
+            self.update_parameters: gapic_v1.method.wrap_method(
+                self.update_parameters, default_timeout=None, client_info=_client_info
+            ),
+            self.delete_instance: gapic_v1.method.wrap_method(
+                self.delete_instance, default_timeout=None, client_info=_client_info
+            ),
+            self.apply_parameters: gapic_v1.method.wrap_method(
+                self.apply_parameters, default_timeout=None, client_info=_client_info
+            ),
+        }
+
     @property
     def operations_client(self) -> operations_v1.OperationsClient:
         """Return the client designed to process long-running operations."""
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @property
     def list_instances(
         self
     ) -> typing.Callable[
-        [cloud_memcache.ListInstancesRequest], cloud_memcache.ListInstancesResponse
+        [cloud_memcache.ListInstancesRequest],
+        typing.Union[
+            cloud_memcache.ListInstancesResponse,
+            typing.Awaitable[cloud_memcache.ListInstancesResponse],
+        ],
     ]:
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @property
     def get_instance(
         self
-    ) -> typing.Callable[[cloud_memcache.GetInstanceRequest], cloud_memcache.Instance]:
-        raise NotImplementedError
+    ) -> typing.Callable[
+        [cloud_memcache.GetInstanceRequest],
+        typing.Union[
+            cloud_memcache.Instance, typing.Awaitable[cloud_memcache.Instance]
+        ],
+    ]:
+        raise NotImplementedError()
 
     @property
     def create_instance(
         self
-    ) -> typing.Callable[[cloud_memcache.CreateInstanceRequest], operations.Operation]:
-        raise NotImplementedError
+    ) -> typing.Callable[
+        [cloud_memcache.CreateInstanceRequest],
+        typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
+    ]:
+        raise NotImplementedError()
 
     @property
     def update_instance(
         self
-    ) -> typing.Callable[[cloud_memcache.UpdateInstanceRequest], operations.Operation]:
-        raise NotImplementedError
+    ) -> typing.Callable[
+        [cloud_memcache.UpdateInstanceRequest],
+        typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
+    ]:
+        raise NotImplementedError()
 
     @property
     def update_parameters(
         self
     ) -> typing.Callable[
-        [cloud_memcache.UpdateParametersRequest], operations.Operation
+        [cloud_memcache.UpdateParametersRequest],
+        typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
     ]:
-        raise NotImplementedError
+        raise NotImplementedError()
 
     @property
     def delete_instance(
         self
-    ) -> typing.Callable[[cloud_memcache.DeleteInstanceRequest], operations.Operation]:
-        raise NotImplementedError
+    ) -> typing.Callable[
+        [cloud_memcache.DeleteInstanceRequest],
+        typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
+    ]:
+        raise NotImplementedError()
 
     @property
     def apply_parameters(
         self
-    ) -> typing.Callable[[cloud_memcache.ApplyParametersRequest], operations.Operation]:
-        raise NotImplementedError
+    ) -> typing.Callable[
+        [cloud_memcache.ApplyParametersRequest],
+        typing.Union[operations.Operation, typing.Awaitable[operations.Operation]],
+    ]:
+        raise NotImplementedError()
 
 
 __all__ = ("CloudMemcacheTransport",)
