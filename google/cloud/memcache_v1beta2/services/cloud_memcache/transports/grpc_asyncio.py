@@ -273,7 +273,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def list_instances(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.ListInstancesRequest],
         Awaitable[cloud_memcache.ListInstancesResponse],
@@ -302,7 +302,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def get_instance(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.GetInstanceRequest], Awaitable[cloud_memcache.Instance]
     ]:
@@ -330,7 +330,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def create_instance(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.CreateInstanceRequest], Awaitable[operations.Operation]
     ]:
@@ -359,7 +359,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def update_instance(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.UpdateInstanceRequest], Awaitable[operations.Operation]
     ]:
@@ -388,7 +388,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def update_parameters(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.UpdateParametersRequest], Awaitable[operations.Operation]
     ]:
@@ -419,7 +419,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def delete_instance(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.DeleteInstanceRequest], Awaitable[operations.Operation]
     ]:
@@ -447,7 +447,7 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
 
     @property
     def apply_parameters(
-        self
+        self,
     ) -> Callable[
         [cloud_memcache.ApplyParametersRequest], Awaitable[operations.Operation]
     ]:
