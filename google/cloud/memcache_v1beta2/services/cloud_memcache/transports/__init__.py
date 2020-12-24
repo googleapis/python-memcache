@@ -25,11 +25,11 @@ from .grpc_asyncio import CloudMemcacheGrpcAsyncIOTransport
 
 # Compile a registry of transports.
 _transport_registry = OrderedDict()  # type: Dict[str, Type[CloudMemcacheTransport]]
-_transport_registry["grpc"] = CloudMemcacheGrpcTransport
-_transport_registry["grpc_asyncio"] = CloudMemcacheGrpcAsyncIOTransport
+_transport_registry['grpc'] = CloudMemcacheGrpcTransport
+_transport_registry['grpc_asyncio'] = CloudMemcacheGrpcAsyncIOTransport
 
 __all__ = (
-    "CloudMemcacheTransport",
-    "CloudMemcacheGrpcTransport",
-    "CloudMemcacheGrpcAsyncIOTransport",
+    'CloudMemcacheTransport',
+    'CloudMemcacheGrpcTransport',
+    'CloudMemcacheGrpcAsyncIOTransport',
 )

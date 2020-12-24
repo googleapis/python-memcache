@@ -21,12 +21,12 @@ import re
 from typing import Dict, Sequence, Tuple, Type, Union
 import pkg_resources
 
-import google.api_core.client_options as ClientOptions  # type: ignore
-from google.api_core import exceptions  # type: ignore
-from google.api_core import gapic_v1  # type: ignore
-from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
-from google.oauth2 import service_account  # type: ignore
+import google.api_core.client_options as ClientOptions # type: ignore
+from google.api_core import exceptions                 # type: ignore
+from google.api_core import gapic_v1                   # type: ignore
+from google.api_core import retry as retries           # type: ignore
+from google.auth import credentials                    # type: ignore
+from google.oauth2 import service_account              # type: ignore
 
 from google.api_core import operation  # type: ignore
 from google.api_core import operation_async  # type: ignore
@@ -72,34 +72,20 @@ class CloudMemcacheAsyncClient:
     instance_path = staticmethod(CloudMemcacheClient.instance_path)
     parse_instance_path = staticmethod(CloudMemcacheClient.parse_instance_path)
 
-    common_billing_account_path = staticmethod(
-        CloudMemcacheClient.common_billing_account_path
-    )
-    parse_common_billing_account_path = staticmethod(
-        CloudMemcacheClient.parse_common_billing_account_path
-    )
+    common_billing_account_path = staticmethod(CloudMemcacheClient.common_billing_account_path)
+    parse_common_billing_account_path = staticmethod(CloudMemcacheClient.parse_common_billing_account_path)
 
     common_folder_path = staticmethod(CloudMemcacheClient.common_folder_path)
-    parse_common_folder_path = staticmethod(
-        CloudMemcacheClient.parse_common_folder_path
-    )
+    parse_common_folder_path = staticmethod(CloudMemcacheClient.parse_common_folder_path)
 
-    common_organization_path = staticmethod(
-        CloudMemcacheClient.common_organization_path
-    )
-    parse_common_organization_path = staticmethod(
-        CloudMemcacheClient.parse_common_organization_path
-    )
+    common_organization_path = staticmethod(CloudMemcacheClient.common_organization_path)
+    parse_common_organization_path = staticmethod(CloudMemcacheClient.parse_common_organization_path)
 
     common_project_path = staticmethod(CloudMemcacheClient.common_project_path)
-    parse_common_project_path = staticmethod(
-        CloudMemcacheClient.parse_common_project_path
-    )
+    parse_common_project_path = staticmethod(CloudMemcacheClient.parse_common_project_path)
 
     common_location_path = staticmethod(CloudMemcacheClient.common_location_path)
-    parse_common_location_path = staticmethod(
-        CloudMemcacheClient.parse_common_location_path
-    )
+    parse_common_location_path = staticmethod(CloudMemcacheClient.parse_common_location_path)
 
     from_service_account_info = CloudMemcacheClient.from_service_account_info
     from_service_account_file = CloudMemcacheClient.from_service_account_file
@@ -114,18 +100,14 @@ class CloudMemcacheAsyncClient:
         """
         return self._client.transport
 
-    get_transport_class = functools.partial(
-        type(CloudMemcacheClient).get_transport_class, type(CloudMemcacheClient)
-    )
+    get_transport_class = functools.partial(type(CloudMemcacheClient).get_transport_class, type(CloudMemcacheClient))
 
-    def __init__(
-        self,
-        *,
-        credentials: credentials.Credentials = None,
-        transport: Union[str, CloudMemcacheTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
-        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-    ) -> None:
+    def __init__(self, *,
+            credentials: credentials.Credentials = None,
+            transport: Union[str, CloudMemcacheTransport] = 'grpc_asyncio',
+            client_options: ClientOptions = None,
+            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+            ) -> None:
         """Instantiate the cloud memcache client.
 
         Args:
@@ -164,17 +146,17 @@ class CloudMemcacheAsyncClient:
             transport=transport,
             client_options=client_options,
             client_info=client_info,
+
         )
 
-    async def list_instances(
-        self,
-        request: cloud_memcache.ListInstancesRequest = None,
-        *,
-        parent: str = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> pagers.ListInstancesAsyncPager:
+    async def list_instances(self,
+            request: cloud_memcache.ListInstancesRequest = None,
+            *,
+            parent: str = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> pagers.ListInstancesAsyncPager:
         r"""Lists Instances in a given project and location.
 
         Args:
@@ -210,10 +192,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.ListInstancesRequest(request)
 
@@ -234,30 +214,39 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata((("parent", request.parent),)),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('parent', request.parent),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # This method is paged; wrap the response in a pager, which provides
         # an `__aiter__` convenience method.
         response = pagers.ListInstancesAsyncPager(
-            method=rpc, request=request, response=response, metadata=metadata,
+            method=rpc,
+            request=request,
+            response=response,
+            metadata=metadata,
         )
 
         # Done; return the response.
         return response
 
-    async def get_instance(
-        self,
-        request: cloud_memcache.GetInstanceRequest = None,
-        *,
-        name: str = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> cloud_memcache.Instance:
+    async def get_instance(self,
+            request: cloud_memcache.GetInstanceRequest = None,
+            *,
+            name: str = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> cloud_memcache.Instance:
         r"""Gets details of a single Instance.
 
         Args:
@@ -288,10 +277,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.GetInstanceRequest(request)
 
@@ -312,26 +299,32 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('name', request.name),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
 
-    async def create_instance(
-        self,
-        request: cloud_memcache.CreateInstanceRequest = None,
-        *,
-        parent: str = None,
-        instance_id: str = None,
-        resource: cloud_memcache.Instance = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> operation_async.AsyncOperation:
+    async def create_instance(self,
+            request: cloud_memcache.CreateInstanceRequest = None,
+            *,
+            parent: str = None,
+            instance_id: str = None,
+            resource: cloud_memcache.Instance = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> operation_async.AsyncOperation:
         r"""Creates a new Instance in a given project and
         location.
 
@@ -385,10 +378,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([parent, instance_id, resource])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.CreateInstanceRequest(request)
 
@@ -413,11 +404,18 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata((("parent", request.parent),)),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('parent', request.parent),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -430,16 +428,15 @@ class CloudMemcacheAsyncClient:
         # Done; return the response.
         return response
 
-    async def update_instance(
-        self,
-        request: cloud_memcache.UpdateInstanceRequest = None,
-        *,
-        update_mask: field_mask.FieldMask = None,
-        resource: cloud_memcache.Instance = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> operation_async.AsyncOperation:
+    async def update_instance(self,
+            request: cloud_memcache.UpdateInstanceRequest = None,
+            *,
+            update_mask: field_mask.FieldMask = None,
+            resource: cloud_memcache.Instance = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> operation_async.AsyncOperation:
         r"""Updates an existing Instance in a given project and
         location.
 
@@ -480,10 +477,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([update_mask, resource])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.UpdateInstanceRequest(request)
 
@@ -506,13 +501,18 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata(
-                (("resource.name", request.resource.name),)
-            ),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('resource.name', request.resource.name),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -525,17 +525,16 @@ class CloudMemcacheAsyncClient:
         # Done; return the response.
         return response
 
-    async def update_parameters(
-        self,
-        request: cloud_memcache.UpdateParametersRequest = None,
-        *,
-        name: str = None,
-        update_mask: field_mask.FieldMask = None,
-        parameters: cloud_memcache.MemcacheParameters = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> operation_async.AsyncOperation:
+    async def update_parameters(self,
+            request: cloud_memcache.UpdateParametersRequest = None,
+            *,
+            name: str = None,
+            update_mask: field_mask.FieldMask = None,
+            parameters: cloud_memcache.MemcacheParameters = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> operation_async.AsyncOperation:
         r"""Updates the defined Memcached Parameters for an
         existing Instance. This method only stages the
         parameters, it must be followed by ApplyParameters to
@@ -583,10 +582,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, update_mask, parameters])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.UpdateParametersRequest(request)
 
@@ -611,11 +608,18 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('name', request.name),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -628,15 +632,14 @@ class CloudMemcacheAsyncClient:
         # Done; return the response.
         return response
 
-    async def delete_instance(
-        self,
-        request: cloud_memcache.DeleteInstanceRequest = None,
-        *,
-        name: str = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> operation_async.AsyncOperation:
+    async def delete_instance(self,
+            request: cloud_memcache.DeleteInstanceRequest = None,
+            *,
+            name: str = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> operation_async.AsyncOperation:
         r"""Deletes a single Instance.
 
         Args:
@@ -683,10 +686,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.DeleteInstanceRequest(request)
 
@@ -707,11 +708,18 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('name', request.name),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -724,17 +732,16 @@ class CloudMemcacheAsyncClient:
         # Done; return the response.
         return response
 
-    async def apply_parameters(
-        self,
-        request: cloud_memcache.ApplyParametersRequest = None,
-        *,
-        name: str = None,
-        node_ids: Sequence[str] = None,
-        apply_all: bool = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
-        metadata: Sequence[Tuple[str, str]] = (),
-    ) -> operation_async.AsyncOperation:
+    async def apply_parameters(self,
+            request: cloud_memcache.ApplyParametersRequest = None,
+            *,
+            name: str = None,
+            node_ids: Sequence[str] = None,
+            apply_all: bool = None,
+            retry: retries.Retry = gapic_v1.method.DEFAULT,
+            timeout: float = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+            ) -> operation_async.AsyncOperation:
         r"""ApplyParameters will update current set of Parameters
         to the set of specified nodes of the Memcached Instance.
 
@@ -785,10 +792,8 @@ class CloudMemcacheAsyncClient:
         # gotten any keyword arguments that map to the request.
         has_flattened_params = any([name, node_ids, apply_all])
         if request is not None and has_flattened_params:
-            raise ValueError(
-                "If the `request` argument is set, then none of "
-                "the individual field arguments should be set."
-            )
+            raise ValueError('If the `request` argument is set, then none of '
+                             'the individual field arguments should be set.')
 
         request = cloud_memcache.ApplyParametersRequest(request)
 
@@ -814,11 +819,18 @@ class CloudMemcacheAsyncClient:
         # Certain fields should be provided within the metadata header;
         # add these here.
         metadata = tuple(metadata) + (
-            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+            gapic_v1.routing_header.to_grpc_metadata((
+                ('name', request.name),
+            )),
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -832,12 +844,21 @@ class CloudMemcacheAsyncClient:
         return response
 
 
+
+
+
+
+
 try:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution("google-cloud-memcache",).version,
+        gapic_version=pkg_resources.get_distribution(
+            'google-cloud-memcache',
+        ).version,
     )
 except pkg_resources.DistributionNotFound:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
-__all__ = ("CloudMemcacheAsyncClient",)
+__all__ = (
+    'CloudMemcacheAsyncClient',
+)
