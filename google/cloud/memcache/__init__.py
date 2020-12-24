@@ -15,8 +15,12 @@
 # limitations under the License.
 #
 
-from google.cloud.memcache_v1beta2.services.cloud_memcache.async_client import CloudMemcacheAsyncClient
-from google.cloud.memcache_v1beta2.services.cloud_memcache.client import CloudMemcacheClient
+from google.cloud.memcache_v1beta2.services.cloud_memcache.async_client import (
+    CloudMemcacheAsyncClient,
+)
+from google.cloud.memcache_v1beta2.services.cloud_memcache.client import (
+    CloudMemcacheClient,
+)
 from google.cloud.memcache_v1beta2.types.cloud_memcache import ApplyParametersRequest
 from google.cloud.memcache_v1beta2.types.cloud_memcache import CreateInstanceRequest
 from google.cloud.memcache_v1beta2.types.cloud_memcache import DeleteInstanceRequest
@@ -33,20 +37,20 @@ from google.cloud.memcache_v1beta2.types.cloud_memcache import UpdateParametersR
 from google.cloud.memcache_v1beta2.types.cloud_memcache import ZoneMetadata
 
 __all__ = (
-    'ApplyParametersRequest',
-    'CloudMemcacheAsyncClient',
-    'CloudMemcacheClient',
-    'CreateInstanceRequest',
-    'DeleteInstanceRequest',
-    'GetInstanceRequest',
-    'Instance',
-    'ListInstancesRequest',
-    'ListInstancesResponse',
-    'LocationMetadata',
-    'MemcacheParameters',
-    'MemcacheVersion',
-    'OperationMetadata',
-    'UpdateInstanceRequest',
-    'UpdateParametersRequest',
-    'ZoneMetadata',
+    "ApplyParametersRequest",
+    "CloudMemcacheAsyncClient",
+    "CloudMemcacheClient",
+    "CreateInstanceRequest",
+    "DeleteInstanceRequest",
+    "GetInstanceRequest",
+    "Instance",
+    "ListInstancesRequest",
+    "ListInstancesResponse",
+    "LocationMetadata",
+    "MemcacheParameters",
+    "MemcacheVersion",
+    "OperationMetadata",
+    "UpdateInstanceRequest",
+    "UpdateParametersRequest",
+    "ZoneMetadata",
 )

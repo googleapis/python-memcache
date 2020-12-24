@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-memcache.git",
-        "sha": "e34e2b1a2b47476cb6a0dcd932dcfd030018936f"
+        "sha": "63d578c2938fcb8dc1442eca2d33129b5d3c237d"
       }
     },
     {
@@ -19,7 +19,14 @@
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "71b8a272549c06b5768d00fa48d3ae990e871bec"
+        "sha": "ee7506d15daa3873accfff9430eff7e3953f0248"
+      }
+    },
+    {
+      "git": {
+        "name": "synthtool",
+        "remote": "https://github.com/googleapis/synthtool.git",
+        "sha": "ee7506d15daa3873accfff9430eff7e3953f0248"
       }
     }
   ],
@@ -33,5 +40,83 @@
         "generator": "gapic-generator-python"
       }
     }
+  ],
+  "generatedFiles": [
+    ".coveragerc",
+    ".flake8",
+    ".github/CONTRIBUTING.md",
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/ISSUE_TEMPLATE/feature_request.md",
+    ".github/ISSUE_TEMPLATE/support_request.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/release-please.yml",
+    ".gitignore",
+    ".kokoro/build.sh",
+    ".kokoro/continuous/common.cfg",
+    ".kokoro/continuous/continuous.cfg",
+    ".kokoro/docs/common.cfg",
+    ".kokoro/docs/docs.cfg",
+    ".kokoro/presubmit/common.cfg",
+    ".kokoro/presubmit/presubmit.cfg",
+    ".kokoro/publish-docs.sh",
+    ".kokoro/release.sh",
+    ".kokoro/release/common.cfg",
+    ".kokoro/release/release.cfg",
+    ".kokoro/samples/lint/common.cfg",
+    ".kokoro/samples/lint/continuous.cfg",
+    ".kokoro/samples/lint/periodic.cfg",
+    ".kokoro/samples/lint/presubmit.cfg",
+    ".kokoro/samples/python3.6/common.cfg",
+    ".kokoro/samples/python3.6/continuous.cfg",
+    ".kokoro/samples/python3.6/periodic.cfg",
+    ".kokoro/samples/python3.6/presubmit.cfg",
+    ".kokoro/samples/python3.7/common.cfg",
+    ".kokoro/samples/python3.7/continuous.cfg",
+    ".kokoro/samples/python3.7/periodic.cfg",
+    ".kokoro/samples/python3.7/presubmit.cfg",
+    ".kokoro/samples/python3.8/common.cfg",
+    ".kokoro/samples/python3.8/continuous.cfg",
+    ".kokoro/samples/python3.8/periodic.cfg",
+    ".kokoro/samples/python3.8/presubmit.cfg",
+    ".kokoro/test-samples.sh",
+    ".kokoro/trampoline.sh",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.rst",
+    "LICENSE",
+    "MANIFEST.in",
+    "docs/_static/custom.css",
+    "docs/_templates/layout.html",
+    "docs/conf.py",
+    "docs/multiprocessing.rst",
+    "google/cloud/memcache/__init__.py",
+    "google/cloud/memcache/py.typed",
+    "google/cloud/memcache_v1beta2/__init__.py",
+    "google/cloud/memcache_v1beta2/py.typed",
+    "google/cloud/memcache_v1beta2/services/__init__.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/__init__.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/async_client.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/client.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/pagers.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/__init__.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/base.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/grpc.py",
+    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/grpc_asyncio.py",
+    "google/cloud/memcache_v1beta2/types/__init__.py",
+    "google/cloud/memcache_v1beta2/types/cloud_memcache.py",
+    "mypy.ini",
+    "noxfile.py",
+    "renovate.json",
+    "scripts/decrypt-secrets.sh",
+    "scripts/fixup_memcache_v1beta2_keywords.py",
+    "scripts/readme-gen/readme_gen.py",
+    "scripts/readme-gen/templates/README.tmpl.rst",
+    "scripts/readme-gen/templates/auth.tmpl.rst",
+    "scripts/readme-gen/templates/auth_api_key.tmpl.rst",
+    "scripts/readme-gen/templates/install_deps.tmpl.rst",
+    "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
+    "setup.cfg",
+    "testing/.gitignore",
+    "tests/unit/gapic/memcache_v1beta2/__init__.py",
+    "tests/unit/gapic/memcache_v1beta2/test_cloud_memcache.py"
   ]
 }
