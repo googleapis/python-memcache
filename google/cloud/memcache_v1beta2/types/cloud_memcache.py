@@ -191,13 +191,13 @@ class Instance(proto.Message):
 
         zone = proto.Field(proto.STRING, number=2)
 
-        state = proto.Field(proto.ENUM, number=3, enum="Instance.Node.State")
+        state = proto.Field(proto.ENUM, number=3, enum="Instance.Node.State",)
 
         host = proto.Field(proto.STRING, number=4)
 
         port = proto.Field(proto.INT32, number=5)
 
-        parameters = proto.Field(proto.MESSAGE, number=6, message="MemcacheParameters")
+        parameters = proto.Field(proto.MESSAGE, number=6, message="MemcacheParameters",)
 
     class InstanceMessage(proto.Message):
         r"""
@@ -216,7 +216,7 @@ class Instance(proto.Message):
             CODE_UNSPECIFIED = 0
             ZONE_DISTRIBUTION_UNBALANCED = 1
 
-        code = proto.Field(proto.ENUM, number=1, enum="Instance.InstanceMessage.Code")
+        code = proto.Field(proto.ENUM, number=1, enum="Instance.InstanceMessage.Code",)
 
         message = proto.Field(proto.STRING, number=2)
 
@@ -232,24 +232,24 @@ class Instance(proto.Message):
 
     node_count = proto.Field(proto.INT32, number=6)
 
-    node_config = proto.Field(proto.MESSAGE, number=7, message=NodeConfig)
+    node_config = proto.Field(proto.MESSAGE, number=7, message=NodeConfig,)
 
-    memcache_version = proto.Field(proto.ENUM, number=9, enum="MemcacheVersion")
+    memcache_version = proto.Field(proto.ENUM, number=9, enum="MemcacheVersion",)
 
-    parameters = proto.Field(proto.MESSAGE, number=11, message="MemcacheParameters")
+    parameters = proto.Field(proto.MESSAGE, number=11, message="MemcacheParameters",)
 
-    memcache_nodes = proto.RepeatedField(proto.MESSAGE, number=12, message=Node)
+    memcache_nodes = proto.RepeatedField(proto.MESSAGE, number=12, message=Node,)
 
-    create_time = proto.Field(proto.MESSAGE, number=13, message=timestamp.Timestamp)
+    create_time = proto.Field(proto.MESSAGE, number=13, message=timestamp.Timestamp,)
 
-    update_time = proto.Field(proto.MESSAGE, number=14, message=timestamp.Timestamp)
+    update_time = proto.Field(proto.MESSAGE, number=14, message=timestamp.Timestamp,)
 
-    state = proto.Field(proto.ENUM, number=15, enum=State)
+    state = proto.Field(proto.ENUM, number=15, enum=State,)
 
     memcache_full_version = proto.Field(proto.STRING, number=18)
 
     instance_messages = proto.RepeatedField(
-        proto.MESSAGE, number=19, message=InstanceMessage
+        proto.MESSAGE, number=19, message=InstanceMessage,
     )
 
     discovery_endpoint = proto.Field(proto.STRING, number=20)
@@ -320,7 +320,7 @@ class ListInstancesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    resources = proto.RepeatedField(proto.MESSAGE, number=1, message="Instance")
+    resources = proto.RepeatedField(proto.MESSAGE, number=1, message="Instance",)
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -368,7 +368,7 @@ class CreateInstanceRequest(proto.Message):
 
     instance_id = proto.Field(proto.STRING, number=2)
 
-    resource = proto.Field(proto.MESSAGE, number=3, message="Instance")
+    resource = proto.Field(proto.MESSAGE, number=3, message="Instance",)
 
 
 class UpdateInstanceRequest(proto.Message):
@@ -385,9 +385,9 @@ class UpdateInstanceRequest(proto.Message):
             specified in update_mask are updated.
     """
 
-    update_mask = proto.Field(proto.MESSAGE, number=1, message=field_mask.FieldMask)
+    update_mask = proto.Field(proto.MESSAGE, number=1, message=field_mask.FieldMask,)
 
-    resource = proto.Field(proto.MESSAGE, number=2, message="Instance")
+    resource = proto.Field(proto.MESSAGE, number=2, message="Instance",)
 
 
 class DeleteInstanceRequest(proto.Message):
@@ -448,9 +448,9 @@ class UpdateParametersRequest(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    update_mask = proto.Field(proto.MESSAGE, number=2, message=field_mask.FieldMask)
+    update_mask = proto.Field(proto.MESSAGE, number=2, message=field_mask.FieldMask,)
 
-    parameters = proto.Field(proto.MESSAGE, number=3, message="MemcacheParameters")
+    parameters = proto.Field(proto.MESSAGE, number=3, message="MemcacheParameters",)
 
 
 class MemcacheParameters(proto.Message):
@@ -500,9 +500,9 @@ class OperationMetadata(proto.Message):
             API version used to start the operation.
     """
 
-    create_time = proto.Field(proto.MESSAGE, number=1, message=timestamp.Timestamp)
+    create_time = proto.Field(proto.MESSAGE, number=1, message=timestamp.Timestamp,)
 
-    end_time = proto.Field(proto.MESSAGE, number=2, message=timestamp.Timestamp)
+    end_time = proto.Field(proto.MESSAGE, number=2, message=timestamp.Timestamp,)
 
     target = proto.Field(proto.STRING, number=3)
 
@@ -528,7 +528,7 @@ class LocationMetadata(proto.Message):
     """
 
     available_zones = proto.MapField(
-        proto.STRING, proto.MESSAGE, number=1, message="ZoneMetadata"
+        proto.STRING, proto.MESSAGE, number=1, message="ZoneMetadata",
     )
 
 
