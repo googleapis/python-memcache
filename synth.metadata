@@ -3,30 +3,22 @@
     {
       "git": {
         "name": ".",
-        "remote": "https://github.com/googleapis/python-memcache.git",
-        "sha": "63d578c2938fcb8dc1442eca2d33129b5d3c237d"
-      }
-    },
-    {
-      "git": {
-        "name": "googleapis",
-        "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "81226871ce438cdeec241dd81f33f796e37e1c03",
-        "internalRef": "315786558"
+        "remote": "git@github.com:googleapis/python-memcache",
+        "sha": "2b4aaed6308e23d2ee8756fdde8d1b27d23ff8d5"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "71b8a272549c06b5768d00fa48d3ae990e871bec"
+        "sha": "6b026e1443948dcfc0b9e3289c85e940eb70f694"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "71b8a272549c06b5768d00fa48d3ae990e871bec"
+        "sha": "6b026e1443948dcfc0b9e3289c85e940eb70f694"
       }
     }
   ],
@@ -37,61 +29,8 @@
         "apiName": "memcache",
         "apiVersion": "v1beta2",
         "language": "python",
-        "generator": "gapic-generator-python"
+        "generator": "bazel"
       }
     }
-  ],
-  "generatedFiles": [
-    ".coveragerc",
-    ".flake8",
-    ".github/CONTRIBUTING.md",
-    ".github/ISSUE_TEMPLATE/bug_report.md",
-    ".github/ISSUE_TEMPLATE/feature_request.md",
-    ".github/ISSUE_TEMPLATE/support_request.md",
-    ".github/PULL_REQUEST_TEMPLATE.md",
-    ".github/release-please.yml",
-    ".gitignore",
-    ".kokoro/build.sh",
-    ".kokoro/continuous/common.cfg",
-    ".kokoro/continuous/continuous.cfg",
-    ".kokoro/docs/common.cfg",
-    ".kokoro/docs/docs.cfg",
-    ".kokoro/presubmit/common.cfg",
-    ".kokoro/presubmit/presubmit.cfg",
-    ".kokoro/publish-docs.sh",
-    ".kokoro/release.sh",
-    ".kokoro/release/common.cfg",
-    ".kokoro/release/release.cfg",
-    ".kokoro/trampoline.sh",
-    "CODE_OF_CONDUCT.md",
-    "CONTRIBUTING.rst",
-    "LICENSE",
-    "MANIFEST.in",
-    "docs/_static/custom.css",
-    "docs/_templates/layout.html",
-    "docs/conf.py",
-    "docs/multiprocessing.rst",
-    "google/cloud/memcache/__init__.py",
-    "google/cloud/memcache/py.typed",
-    "google/cloud/memcache_v1beta2/__init__.py",
-    "google/cloud/memcache_v1beta2/py.typed",
-    "google/cloud/memcache_v1beta2/services/__init__.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/__init__.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/async_client.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/client.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/pagers.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/__init__.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/base.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/grpc.py",
-    "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/grpc_asyncio.py",
-    "google/cloud/memcache_v1beta2/types/__init__.py",
-    "google/cloud/memcache_v1beta2/types/cloud_memcache.py",
-    "mypy.ini",
-    "noxfile.py",
-    "renovate.json",
-    "scripts/fixup_memcache_v1beta2_keywords.py",
-    "setup.cfg",
-    "tests/unit/gapic/memcache_v1beta2/__init__.py",
-    "tests/unit/gapic/memcache_v1beta2/test_cloud_memcache.py"
   ]
 }

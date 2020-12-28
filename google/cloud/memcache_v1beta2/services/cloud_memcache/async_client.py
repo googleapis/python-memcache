@@ -101,7 +101,6 @@ class CloudMemcacheAsyncClient:
         CloudMemcacheClient.parse_common_location_path
     )
 
-    from_service_account_info = CloudMemcacheClient.from_service_account_info
     from_service_account_file = CloudMemcacheClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -227,7 +226,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.list_instances,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -238,12 +237,12 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # This method is paged; wrap the response in a pager, which provides
         # an `__aiter__` convenience method.
         response = pagers.ListInstancesAsyncPager(
-            method=rpc, request=request, response=response, metadata=metadata
+            method=rpc, request=request, response=response, metadata=metadata,
         )
 
         # Done; return the response.
@@ -305,7 +304,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.get_instance,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -316,7 +315,7 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Done; return the response.
         return response
@@ -406,7 +405,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_instance,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -417,7 +416,7 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -499,7 +498,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_instance,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -512,7 +511,7 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -604,7 +603,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_parameters,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -615,7 +614,7 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -700,7 +699,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.delete_instance,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -711,7 +710,7 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -807,7 +806,7 @@ class CloudMemcacheAsyncClient:
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.apply_parameters,
-            default_timeout=None,
+            default_timeout=1200.0,
             client_info=DEFAULT_CLIENT_INFO,
         )
 
@@ -818,7 +817,7 @@ class CloudMemcacheAsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata)
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Wrap the response in an operation future.
         response = operation_async.from_gapic(
@@ -834,7 +833,7 @@ class CloudMemcacheAsyncClient:
 
 try:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution("google-cloud-memcache").version
+        gapic_version=pkg_resources.get_distribution("google-cloud-memcache",).version,
     )
 except pkg_resources.DistributionNotFound:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
