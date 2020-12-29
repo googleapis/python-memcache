@@ -1,23 +1,16 @@
-Python Client for Cloud Memorystore for Memcached
-=================================================
+Python Client for Cloud Memorystore for Memcached API (`Beta`_)
+===============================================================
 
-|beta| |pypi| |versions|
-
-`Cloud Memorystore for Memached API`_: Ship performant and highly available key value store, 
-compatible with OSS Memcached protocol.
+`Cloud Memorystore for Memcached API`_: Google Cloud Memorystore for Memcached API is used for creating and
+managing Memcached instances in GCP.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
 
-.. |beta| image:: https://img.shields.io/badge/support-beta-orange.svg
-   :target: https://github.com/googleapis/google-cloud-python/blob/master/README.rst#beta-support
-.. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-memcache.svg
-   :target: https://pypi.org/project/google-cloud-memcache/
-.. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-memcache.svg
-   :target: https://pypi.org/project/google-cloud-memcache/
-.. _Cloud Memorystore for Memached API: https://cloud.google.com/memorystore/docs/memcached/
-.. _Client Library Documentation: https://googleapis.dev/python/memcache/latest
-.. _Product Documentation:  https://cloud.google.com/memorystore/docs/memcached/
+.. _Beta: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
+.. _Cloud Memorystore for Memcached API: https://cloud.google.com/memcache
+.. _Client Library Documentation: https://googleapis.github.io/google-cloud-python/latest/memcache/usage.html
+.. _Product Documentation:  https://cloud.google.com/memcache
 
 Quick Start
 -----------
@@ -31,8 +24,8 @@ In order to use this library, you first need to go through the following steps:
 
 .. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
 .. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
-.. _Enable the Cloud Memorystore for Memcached API.:  https://cloud.google.com/memorystore/docs/memcached/
-.. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
+.. _Enable the Cloud Memorystore for Memcached API.:  https://cloud.google.com/memcache
+.. _Setup Authentication.: https://googleapis.github.io/google-cloud-python/latest/core/auth.html
 
 Installation
 ~~~~~~~~~~~~
@@ -72,12 +65,12 @@ Windows
 Next Steps
 ~~~~~~~~~~
 
--  Read the `Client Library Documentation`_ for Cloud Billing API
+-  Read the `Client Library Documentation`_ for Cloud Memorystore for Memcached API
    API to see other available methods on the client.
 -  Read the `Cloud Memorystore for Memcached API Product documentation`_ to learn
    more about the product and see How-to Guides.
 -  View this `repository’s main README`_ to see the full list of Cloud
    APIs that we cover.
 
-.. _Cloud Memorystore for Memcached API Product documentation:  https://cloud.google.com/memorystore/docs/memcached/
+.. _Cloud Memorystore for Memcached API Product documentation:  https://cloud.google.com/memcache
 .. _repository’s main README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
