@@ -357,6 +357,7 @@ class CloudMemcacheAsyncClient:
                 -  Must end with a number or a letter.
                 -  Must be unique within the user project / location
 
+
                 This corresponds to the ``instance_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -451,6 +452,7 @@ class CloudMemcacheAsyncClient:
                 Required. Mask of fields to update.
 
                 -  ``displayName``
+
 
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
