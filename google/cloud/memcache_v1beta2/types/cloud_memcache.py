@@ -67,7 +67,7 @@ class Instance(proto.Message):
             Optional. User provided name for the instance
             only used for display purposes. Cannot be more
             than 80 characters.
-        labels (Sequence[~.cloud_memcache.Instance.LabelsEntry]):
+        labels (Sequence[google.cloud.memcache_v1beta2.types.Instance.LabelsEntry]):
             Optional. Resource labels to represent user-
             rovided metadata. Refer to cloud documentation
             on labels for more details.
@@ -88,27 +88,27 @@ class Instance(proto.Message):
         node_count (int):
             Required. Number of nodes in the Memcached
             instance.
-        node_config (~.cloud_memcache.Instance.NodeConfig):
+        node_config (google.cloud.memcache_v1beta2.types.Instance.NodeConfig):
             Required. Configuration for Memcached nodes.
-        memcache_version (~.cloud_memcache.MemcacheVersion):
+        memcache_version (google.cloud.memcache_v1beta2.types.MemcacheVersion):
             Optional. The major version of Memcached software. If not
             provided, latest supported version will be used. Currently
             the latest supported major version is MEMCACHE_1_5. The
             minor version will be automatically determined by our system
             based on the latest supported minor version.
-        parameters (~.cloud_memcache.MemcacheParameters):
+        parameters (google.cloud.memcache_v1beta2.types.MemcacheParameters):
             Optional: User defined parameters to apply to
             the memcached process on each node.
-        memcache_nodes (Sequence[~.cloud_memcache.Instance.Node]):
+        memcache_nodes (Sequence[google.cloud.memcache_v1beta2.types.Instance.Node]):
             Output only. List of Memcached nodes. Refer to [Node]
             message for more details.
-        create_time (~.timestamp.Timestamp):
+        create_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. The time the instance was
             created.
-        update_time (~.timestamp.Timestamp):
+        update_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. The time the instance was
             updated.
-        state (~.cloud_memcache.Instance.State):
+        state (google.cloud.memcache_v1beta2.types.Instance.State):
             Output only. The state of this Memcached
             instance.
         memcache_full_version (str):
@@ -119,7 +119,7 @@ class Instance(proto.Message):
             MemcacheVersion.
             The full version format will be
             "memcached-1.5.16".
-        instance_messages (Sequence[~.cloud_memcache.Instance.InstanceMessage]):
+        instance_messages (Sequence[google.cloud.memcache_v1beta2.types.Instance.InstanceMessage]):
             List of messages that describe current
             statuses of memcached instance.
         discovery_endpoint (str):
@@ -162,7 +162,7 @@ class Instance(proto.Message):
             zone (str):
                 Output only. Location (GCP Zone) for the
                 Memcached node.
-            state (~.cloud_memcache.Instance.Node.State):
+            state (google.cloud.memcache_v1beta2.types.Instance.Node.State):
                 Output only. Current state of the Memcached
                 node.
             host (str):
@@ -172,7 +172,7 @@ class Instance(proto.Message):
             port (int):
                 Output only. The port number of the Memcached
                 server on this node.
-            parameters (~.cloud_memcache.MemcacheParameters):
+            parameters (google.cloud.memcache_v1beta2.types.MemcacheParameters):
                 User defined parameters currently applied to
                 the node.
         """
@@ -203,7 +203,7 @@ class Instance(proto.Message):
         r"""
 
         Attributes:
-            code (~.cloud_memcache.Instance.InstanceMessage.Code):
+            code (google.cloud.memcache_v1beta2.types.Instance.InstanceMessage.Code):
                 A code that correspond to one type of user-
                 acing message.
             message (str):
@@ -301,7 +301,7 @@ class ListInstancesResponse(proto.Message):
     [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
 
     Attributes:
-        resources (Sequence[~.cloud_memcache.Instance]):
+        resources (Sequence[google.cloud.memcache_v1beta2.types.Instance]):
             A list of Memcached instances in the project in the
             specified location, or across all locations.
 
@@ -360,7 +360,7 @@ class CreateInstanceRequest(proto.Message):
             -  Must be between 1-40 characters.
             -  Must end with a number or a letter.
             -  Must be unique within the user project / location
-        resource (~.cloud_memcache.Instance):
+        resource (google.cloud.memcache_v1beta2.types.Instance):
             Required. A Memcached [Instance] resource
     """
 
@@ -376,11 +376,11 @@ class UpdateInstanceRequest(proto.Message):
     [UpdateInstance][google.cloud.memcache.v1beta2.CloudMemcache.UpdateInstance].
 
     Attributes:
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             Required. Mask of fields to update.
 
             -  ``displayName``
-        resource (~.cloud_memcache.Instance):
+        resource (google.cloud.memcache_v1beta2.types.Instance):
             Required. A Memcached [Instance] resource. Only fields
             specified in update_mask are updated.
     """
@@ -440,9 +440,9 @@ class UpdateParametersRequest(proto.Message):
             Required. Resource name of the Memcached
             instance for which the parameters should be
             updated.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             Required. Mask of fields to update.
-        parameters (~.cloud_memcache.MemcacheParameters):
+        parameters (google.cloud.memcache_v1beta2.types.MemcacheParameters):
             The parameters to apply to the instance.
     """
 
@@ -464,7 +464,7 @@ class MemcacheParameters(proto.Message):
             instance differ from the parameters associated
             with the nodes and any action needs to be taken
             to apply parameters on nodes.
-        params (Sequence[~.cloud_memcache.MemcacheParameters.ParamsEntry]):
+        params (Sequence[google.cloud.memcache_v1beta2.types.MemcacheParameters.ParamsEntry]):
             User defined set of parameters to use in the
             memcached process.
     """
@@ -478,9 +478,9 @@ class OperationMetadata(proto.Message):
     r"""Represents the metadata of a long-running operation.
 
     Attributes:
-        create_time (~.timestamp.Timestamp):
+        create_time (google.protobuf.timestamp_pb2.Timestamp):
             Time when the operation was created.
-        end_time (~.timestamp.Timestamp):
+        end_time (google.protobuf.timestamp_pb2.Timestamp):
             Time when the operation finished running.
         target (str):
             Server-defined resource path for the target
@@ -520,7 +520,7 @@ class LocationMetadata(proto.Message):
     [google.cloud.location.Location][google.cloud.location.Location].
 
     Attributes:
-        available_zones (Sequence[~.cloud_memcache.LocationMetadata.AvailableZonesEntry]):
+        available_zones (Sequence[google.cloud.memcache_v1beta2.types.LocationMetadata.AvailableZonesEntry]):
             Output only. The set of available zones in the location. The
             map is keyed by the lowercase ID of each zone, as defined by
             GCE. These keys can be specified in the ``zones`` field when

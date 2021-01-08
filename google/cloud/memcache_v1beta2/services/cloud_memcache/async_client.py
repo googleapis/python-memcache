@@ -101,6 +101,7 @@ class CloudMemcacheAsyncClient:
         CloudMemcacheClient.parse_common_location_path
     )
 
+    from_service_account_info = CloudMemcacheClient.from_service_account_info
     from_service_account_file = CloudMemcacheClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -177,7 +178,7 @@ class CloudMemcacheAsyncClient:
         r"""Lists Instances in a given project and location.
 
         Args:
-            request (:class:`~.cloud_memcache.ListInstancesRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.ListInstancesRequest`):
                 The request object. Request for
                 [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
             parent (:class:`str`):
@@ -185,6 +186,7 @@ class CloudMemcacheAsyncClient:
                 using the form:
                 ``projects/{project_id}/locations/{location_id}`` where
                 ``location_id`` refers to a GCP region
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -196,7 +198,7 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListInstancesAsyncPager:
+            google.cloud.memcache_v1beta2.services.cloud_memcache.pagers.ListInstancesAsyncPager:
                 Response for
                 [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
 
@@ -260,7 +262,7 @@ class CloudMemcacheAsyncClient:
         r"""Gets details of a single Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.GetInstanceRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.GetInstanceRequest`):
                 The request object. Request for
                 [GetInstance][google.cloud.memcache.v1beta2.CloudMemcache.GetInstance].
             name (:class:`str`):
@@ -268,6 +270,7 @@ class CloudMemcacheAsyncClient:
                 format:
                 ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
                 where ``location_id`` refers to a GCP region
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -279,7 +282,7 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.cloud_memcache.Instance:
+            google.cloud.memcache_v1beta2.types.Instance:
 
         """
         # Create or coerce a protobuf request object.
@@ -335,7 +338,7 @@ class CloudMemcacheAsyncClient:
         location.
 
         Args:
-            request (:class:`~.cloud_memcache.CreateInstanceRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.CreateInstanceRequest`):
                 The request object. Request for
                 [CreateInstance][google.cloud.memcache.v1beta2.CloudMemcache.CreateInstance].
             parent (:class:`str`):
@@ -343,6 +346,7 @@ class CloudMemcacheAsyncClient:
                 using the form:
                 ``projects/{project_id}/locations/{location_id}`` where
                 ``location_id`` refers to a GCP region
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -357,10 +361,11 @@ class CloudMemcacheAsyncClient:
                 -  Must end with a number or a letter.
                 -  Must be unique within the user project / location
 
+
                 This corresponds to the ``instance_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            resource (:class:`~.cloud_memcache.Instance`):
+            resource (:class:`google.cloud.memcache_v1beta2.types.Instance`):
                 Required. A Memcached [Instance] resource
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -373,11 +378,11 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
@@ -444,20 +449,22 @@ class CloudMemcacheAsyncClient:
         location.
 
         Args:
-            request (:class:`~.cloud_memcache.UpdateInstanceRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.UpdateInstanceRequest`):
                 The request object. Request for
                 [UpdateInstance][google.cloud.memcache.v1beta2.CloudMemcache.UpdateInstance].
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 Required. Mask of fields to update.
 
                 -  ``displayName``
 
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            resource (:class:`~.cloud_memcache.Instance`):
+            resource (:class:`google.cloud.memcache_v1beta2.types.Instance`):
                 Required. A Memcached [Instance] resource. Only fields
                 specified in update_mask are updated.
+
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -469,11 +476,11 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
@@ -543,24 +550,26 @@ class CloudMemcacheAsyncClient:
         apply the parameters to nodes of the Memcached Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.UpdateParametersRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.UpdateParametersRequest`):
                 The request object. Request for
                 [UpdateParameters][google.cloud.memcache.v1beta2.CloudMemcache.UpdateParameters].
             name (:class:`str`):
                 Required. Resource name of the
                 Memcached instance for which the
                 parameters should be updated.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 Required. Mask of fields to update.
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            parameters (:class:`~.cloud_memcache.MemcacheParameters`):
+            parameters (:class:`google.cloud.memcache_v1beta2.types.MemcacheParameters`):
                 The parameters to apply to the
                 instance.
+
                 This corresponds to the ``parameters`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -572,11 +581,11 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
@@ -641,13 +650,14 @@ class CloudMemcacheAsyncClient:
         r"""Deletes a single Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.DeleteInstanceRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.DeleteInstanceRequest`):
                 The request object. Request for
                 [DeleteInstance][google.cloud.memcache.v1beta2.CloudMemcache.DeleteInstance].
             name (:class:`str`):
                 Memcached instance resource name in the format:
                 ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
                 where ``location_id`` refers to a GCP region
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -659,24 +669,22 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.empty.Empty``: A generic empty message that
-                you can re-use to avoid defining duplicated empty
-                messages in your APIs. A typical example is to use it as
-                the request or the response type of an API method. For
-                instance:
+                The result type for the operation will be :class:`google.protobuf.empty_pb2.Empty` A generic empty message that you can re-use to avoid defining duplicated
+                   empty messages in your APIs. A typical example is to
+                   use it as the request or the response type of an API
+                   method. For instance:
 
-                ::
+                      service Foo {
+                         rpc Bar(google.protobuf.Empty) returns
+                         (google.protobuf.Empty);
 
-                    service Foo {
-                      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-                    }
+                      }
 
-                The JSON representation for ``Empty`` is empty JSON
-                object ``{}``.
+                   The JSON representation for Empty is empty JSON
+                   object {}.
 
         """
         # Create or coerce a protobuf request object.
@@ -740,19 +748,21 @@ class CloudMemcacheAsyncClient:
         to the set of specified nodes of the Memcached Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.ApplyParametersRequest`):
+            request (:class:`google.cloud.memcache_v1beta2.types.ApplyParametersRequest`):
                 The request object. Request for
                 [ApplyParameters][google.cloud.memcache.v1beta2.CloudMemcache.ApplyParameters].
             name (:class:`str`):
                 Required. Resource name of the
                 Memcached instance for which parameter
                 group updates should be applied.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
             node_ids (:class:`Sequence[str]`):
                 Nodes to which we should apply the
                 instance-level parameter group.
+
                 This corresponds to the ``node_ids`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -763,6 +773,7 @@ class CloudMemcacheAsyncClient:
                 from specifying any nodes, and apply
                 parameter group updates to all nodes
                 within the instance.
+
                 This corresponds to the ``apply_all`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -774,11 +785,11 @@ class CloudMemcacheAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.

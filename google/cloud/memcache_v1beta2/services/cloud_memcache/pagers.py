@@ -24,7 +24,7 @@ class ListInstancesPager:
     """A pager for iterating through ``list_instances`` requests.
 
     This class thinly wraps an initial
-    :class:`~.cloud_memcache.ListInstancesResponse` object, and
+    :class:`google.cloud.memcache_v1beta2.types.ListInstancesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``resources`` field.
 
@@ -33,7 +33,7 @@ class ListInstancesPager:
     through the ``resources`` field on the
     corresponding responses.
 
-    All the usual :class:`~.cloud_memcache.ListInstancesResponse`
+    All the usual :class:`google.cloud.memcache_v1beta2.types.ListInstancesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -51,9 +51,9 @@ class ListInstancesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.cloud_memcache.ListInstancesRequest`):
+            request (google.cloud.memcache_v1beta2.types.ListInstancesRequest):
                 The initial request object.
-            response (:class:`~.cloud_memcache.ListInstancesResponse`):
+            response (google.cloud.memcache_v1beta2.types.ListInstancesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -86,7 +86,7 @@ class ListInstancesAsyncPager:
     """A pager for iterating through ``list_instances`` requests.
 
     This class thinly wraps an initial
-    :class:`~.cloud_memcache.ListInstancesResponse` object, and
+    :class:`google.cloud.memcache_v1beta2.types.ListInstancesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``resources`` field.
 
@@ -95,7 +95,7 @@ class ListInstancesAsyncPager:
     through the ``resources`` field on the
     corresponding responses.
 
-    All the usual :class:`~.cloud_memcache.ListInstancesResponse`
+    All the usual :class:`google.cloud.memcache_v1beta2.types.ListInstancesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -113,9 +113,9 @@ class ListInstancesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.cloud_memcache.ListInstancesRequest`):
+            request (google.cloud.memcache_v1beta2.types.ListInstancesRequest):
                 The initial request object.
-            response (:class:`~.cloud_memcache.ListInstancesResponse`):
+            response (google.cloud.memcache_v1beta2.types.ListInstancesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.

@@ -134,6 +134,22 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            CloudMemcacheClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -145,7 +161,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            CloudMemcacheClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -253,10 +269,10 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.CloudMemcacheTransport]): The
+            transport (Union[str, CloudMemcacheTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -366,14 +382,15 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         r"""Lists Instances in a given project and location.
 
         Args:
-            request (:class:`~.cloud_memcache.ListInstancesRequest`):
+            request (google.cloud.memcache_v1beta2.types.ListInstancesRequest):
                 The request object. Request for
                 [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
-            parent (:class:`str`):
+            parent (str):
                 Required. The resource name of the instance location
                 using the form:
                 ``projects/{project_id}/locations/{location_id}`` where
                 ``location_id`` refers to a GCP region
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -385,7 +402,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListInstancesPager:
+            google.cloud.memcache_v1beta2.services.cloud_memcache.pagers.ListInstancesPager:
                 Response for
                 [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
 
@@ -450,14 +467,15 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         r"""Gets details of a single Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.GetInstanceRequest`):
+            request (google.cloud.memcache_v1beta2.types.GetInstanceRequest):
                 The request object. Request for
                 [GetInstance][google.cloud.memcache.v1beta2.CloudMemcache.GetInstance].
-            name (:class:`str`):
+            name (str):
                 Required. Memcached instance resource name in the
                 format:
                 ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
                 where ``location_id`` refers to a GCP region
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -469,7 +487,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.cloud_memcache.Instance:
+            google.cloud.memcache_v1beta2.types.Instance:
 
         """
         # Create or coerce a protobuf request object.
@@ -526,18 +544,19 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         location.
 
         Args:
-            request (:class:`~.cloud_memcache.CreateInstanceRequest`):
+            request (google.cloud.memcache_v1beta2.types.CreateInstanceRequest):
                 The request object. Request for
                 [CreateInstance][google.cloud.memcache.v1beta2.CloudMemcache.CreateInstance].
-            parent (:class:`str`):
+            parent (str):
                 Required. The resource name of the instance location
                 using the form:
                 ``projects/{project_id}/locations/{location_id}`` where
                 ``location_id`` refers to a GCP region
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            instance_id (:class:`str`):
+            instance_id (str):
                 Required. The logical name of the Memcached instance in
                 the user project with the following restrictions:
 
@@ -548,10 +567,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 -  Must end with a number or a letter.
                 -  Must be unique within the user project / location
 
+
                 This corresponds to the ``instance_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            resource (:class:`~.cloud_memcache.Instance`):
+            resource (google.cloud.memcache_v1beta2.types.Instance):
                 Required. A Memcached [Instance] resource
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -564,11 +584,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
@@ -636,20 +656,22 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         location.
 
         Args:
-            request (:class:`~.cloud_memcache.UpdateInstanceRequest`):
+            request (google.cloud.memcache_v1beta2.types.UpdateInstanceRequest):
                 The request object. Request for
                 [UpdateInstance][google.cloud.memcache.v1beta2.CloudMemcache.UpdateInstance].
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 Required. Mask of fields to update.
 
                 -  ``displayName``
 
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            resource (:class:`~.cloud_memcache.Instance`):
+            resource (google.cloud.memcache_v1beta2.types.Instance):
                 Required. A Memcached [Instance] resource. Only fields
                 specified in update_mask are updated.
+
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -661,11 +683,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
@@ -736,24 +758,26 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         apply the parameters to nodes of the Memcached Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.UpdateParametersRequest`):
+            request (google.cloud.memcache_v1beta2.types.UpdateParametersRequest):
                 The request object. Request for
                 [UpdateParameters][google.cloud.memcache.v1beta2.CloudMemcache.UpdateParameters].
-            name (:class:`str`):
+            name (str):
                 Required. Resource name of the
                 Memcached instance for which the
                 parameters should be updated.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 Required. Mask of fields to update.
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            parameters (:class:`~.cloud_memcache.MemcacheParameters`):
+            parameters (google.cloud.memcache_v1beta2.types.MemcacheParameters):
                 The parameters to apply to the
                 instance.
+
                 This corresponds to the ``parameters`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -765,11 +789,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
@@ -835,13 +859,14 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         r"""Deletes a single Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.DeleteInstanceRequest`):
+            request (google.cloud.memcache_v1beta2.types.DeleteInstanceRequest):
                 The request object. Request for
                 [DeleteInstance][google.cloud.memcache.v1beta2.CloudMemcache.DeleteInstance].
-            name (:class:`str`):
+            name (str):
                 Memcached instance resource name in the format:
                 ``projects/{project_id}/locations/{location_id}/instances/{instance_id}``
                 where ``location_id`` refers to a GCP region
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -853,24 +878,22 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.empty.Empty``: A generic empty message that
-                you can re-use to avoid defining duplicated empty
-                messages in your APIs. A typical example is to use it as
-                the request or the response type of an API method. For
-                instance:
+                The result type for the operation will be :class:`google.protobuf.empty_pb2.Empty` A generic empty message that you can re-use to avoid defining duplicated
+                   empty messages in your APIs. A typical example is to
+                   use it as the request or the response type of an API
+                   method. For instance:
 
-                ::
+                      service Foo {
+                         rpc Bar(google.protobuf.Empty) returns
+                         (google.protobuf.Empty);
 
-                    service Foo {
-                      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-                    }
+                      }
 
-                The JSON representation for ``Empty`` is empty JSON
-                object ``{}``.
+                   The JSON representation for Empty is empty JSON
+                   object {}.
 
         """
         # Create or coerce a protobuf request object.
@@ -935,29 +958,32 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         to the set of specified nodes of the Memcached Instance.
 
         Args:
-            request (:class:`~.cloud_memcache.ApplyParametersRequest`):
+            request (google.cloud.memcache_v1beta2.types.ApplyParametersRequest):
                 The request object. Request for
                 [ApplyParameters][google.cloud.memcache.v1beta2.CloudMemcache.ApplyParameters].
-            name (:class:`str`):
+            name (str):
                 Required. Resource name of the
                 Memcached instance for which parameter
                 group updates should be applied.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            node_ids (:class:`Sequence[str]`):
+            node_ids (Sequence[str]):
                 Nodes to which we should apply the
                 instance-level parameter group.
+
                 This corresponds to the ``node_ids`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            apply_all (:class:`bool`):
+            apply_all (bool):
                 Whether to apply instance-level
                 parameter group to all nodes. If set to
                 true, will explicitly restrict users
                 from specifying any nodes, and apply
                 parameter group updates to all nodes
                 within the instance.
+
                 This corresponds to the ``apply_all`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -969,11 +995,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.cloud_memcache.Instance``:
+                :class:`google.cloud.memcache_v1beta2.types.Instance`
 
         """
         # Create or coerce a protobuf request object.
