@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-memcache",
-        "sha": "f56ffb450cbc6f5fa0156fe731fc2878f7313950"
+        "sha": "0f8357803b2ae2e06115d36ef4e84967a8ba1256"
       }
     },
     {

@@ -566,7 +566,6 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 -  Must end with a number or a letter.
                 -  Must be unique within the user project / location
 
-
                 If any of the above are not met, will raise an invalid
                 argument error.
 
@@ -667,7 +666,6 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 Required. Mask of fields to update.
 
                 -  ``displayName``
-
 
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
