@@ -38,6 +38,7 @@ for version in versions:
     excludes = [
         "setup.py",
         "docs/index.rst",
+        "README.rst"
     ]
     s.move(library, excludes=excludes)
 
