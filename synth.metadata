@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-memcache.git",
-        "sha": "83fc2cbfd24ff884a7e96fc03be543c909d26aac"
+        "sha": "68ed93b390afe485ab726ae1afc2678b4f4695f7"
       }
     },
     {
@@ -145,7 +145,6 @@
     "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/grpc_asyncio.py",
     "google/cloud/memcache_v1beta2/types/__init__.py",
     "google/cloud/memcache_v1beta2/types/cloud_memcache.py",
-    "memcache-v1beta2-py.tar.gz",
     "mypy.ini",
     "noxfile.py",
     "renovate.json",
