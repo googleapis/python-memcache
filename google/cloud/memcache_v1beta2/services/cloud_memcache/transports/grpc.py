@@ -262,9 +262,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.ListInstancesRequest], cloud_memcache.ListInstancesResponse
     ]:
-        r"""Return a callable for the
-        list instances
-          method over gRPC.
+        r"""Return a callable for the list instances method over gRPC.
 
         Lists Instances in a given location.
 
@@ -290,9 +288,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def get_instance(
         self,
     ) -> Callable[[cloud_memcache.GetInstanceRequest], cloud_memcache.Instance]:
-        r"""Return a callable for the
-        get instance
-          method over gRPC.
+        r"""Return a callable for the get instance method over gRPC.
 
         Gets details of a single Instance.
 
@@ -318,9 +314,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def create_instance(
         self,
     ) -> Callable[[cloud_memcache.CreateInstanceRequest], operations.Operation]:
-        r"""Return a callable for the
-        create instance
-          method over gRPC.
+        r"""Return a callable for the create instance method over gRPC.
 
         Creates a new Instance in a given location.
 
@@ -346,9 +340,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def update_instance(
         self,
     ) -> Callable[[cloud_memcache.UpdateInstanceRequest], operations.Operation]:
-        r"""Return a callable for the
-        update instance
-          method over gRPC.
+        r"""Return a callable for the update instance method over gRPC.
 
         Updates an existing Instance in a given project and
         location.
@@ -375,9 +367,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def update_parameters(
         self,
     ) -> Callable[[cloud_memcache.UpdateParametersRequest], operations.Operation]:
-        r"""Return a callable for the
-        update parameters
-          method over gRPC.
+        r"""Return a callable for the update parameters method over gRPC.
 
         Updates the defined Memcached parameters for an existing
         instance. This method only stages the parameters, it must be
@@ -406,9 +396,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def delete_instance(
         self,
     ) -> Callable[[cloud_memcache.DeleteInstanceRequest], operations.Operation]:
-        r"""Return a callable for the
-        delete instance
-          method over gRPC.
+        r"""Return a callable for the delete instance method over gRPC.
 
         Deletes a single Instance.
 
@@ -434,9 +422,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def apply_parameters(
         self,
     ) -> Callable[[cloud_memcache.ApplyParametersRequest], operations.Operation]:
-        r"""Return a callable for the
-        apply parameters
-          method over gRPC.
+        r"""Return a callable for the apply parameters method over gRPC.
 
         ``ApplyParameters`` restarts the set of specified nodes in order
         to update them to the current set of parameters for the
@@ -464,9 +450,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def apply_software_update(
         self,
     ) -> Callable[[cloud_memcache.ApplySoftwareUpdateRequest], operations.Operation]:
-        r"""Return a callable for the
-        apply software update
-          method over gRPC.
+        r"""Return a callable for the apply software update method over gRPC.
 
         Updates software on the selected nodes of the
         Instance.

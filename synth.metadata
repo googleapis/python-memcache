@@ -4,29 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-memcache.git",
-        "sha": "83fc2cbfd24ff884a7e96fc03be543c909d26aac"
+        "sha": "9fa0446f46e98c701e92fce6388c4093e880f40c"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "56fc6d43fed71188d7e18f3ca003544646c4ab35",
-        "internalRef": "366346972"
-      }
-    },
-    {
-      "git": {
-        "name": "synthtool",
-        "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "5b5bf6d519b2d658d9f2e483d9f6f3d0ba8ee6bc"
-      }
-    },
-    {
-      "git": {
-        "name": "synthtool",
-        "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "5b5bf6d519b2d658d9f2e483d9f6f3d0ba8ee6bc"
+        "sha": "382ed8de075e1ddc9baa4ebf8dbc5b2c257a77b8",
+        "internalRef": "370926454"
       }
     }
   ],
@@ -120,6 +106,7 @@
     "google/cloud/memcache/__init__.py",
     "google/cloud/memcache/py.typed",
     "google/cloud/memcache_v1/__init__.py",
+    "google/cloud/memcache_v1/gapic_metadata.json",
     "google/cloud/memcache_v1/py.typed",
     "google/cloud/memcache_v1/services/__init__.py",
     "google/cloud/memcache_v1/services/cloud_memcache/__init__.py",
@@ -133,6 +120,7 @@
     "google/cloud/memcache_v1/types/__init__.py",
     "google/cloud/memcache_v1/types/cloud_memcache.py",
     "google/cloud/memcache_v1beta2/__init__.py",
+    "google/cloud/memcache_v1beta2/gapic_metadata.json",
     "google/cloud/memcache_v1beta2/py.typed",
     "google/cloud/memcache_v1beta2/services/__init__.py",
     "google/cloud/memcache_v1beta2/services/cloud_memcache/__init__.py",
@@ -145,7 +133,6 @@
     "google/cloud/memcache_v1beta2/services/cloud_memcache/transports/grpc_asyncio.py",
     "google/cloud/memcache_v1beta2/types/__init__.py",
     "google/cloud/memcache_v1beta2/types/cloud_memcache.py",
-    "memcache-v1beta2-py.tar.gz",
     "mypy.ini",
     "noxfile.py",
     "renovate.json",
@@ -160,6 +147,9 @@
     "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
     "setup.cfg",
     "testing/.gitignore",
+    "tests/__init__.py",
+    "tests/unit/__init__.py",
+    "tests/unit/gapic/__init__.py",
     "tests/unit/gapic/memcache_v1/__init__.py",
     "tests/unit/gapic/memcache_v1/test_cloud_memcache.py",
     "tests/unit/gapic/memcache_v1beta2/__init__.py",

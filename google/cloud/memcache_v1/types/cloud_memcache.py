@@ -201,7 +201,7 @@ class Instance(proto.Message):
 
     name = proto.Field(proto.STRING, number=1,)
     display_name = proto.Field(proto.STRING, number=2,)
-    labels = proto.MapField(proto.STRING, proto.STRING, number=3)
+    labels = proto.MapField(proto.STRING, proto.STRING, number=3,)
     authorized_network = proto.Field(proto.STRING, number=4,)
     zones = proto.RepeatedField(proto.STRING, number=5,)
     node_count = proto.Field(proto.INT32, number=6,)
@@ -423,7 +423,7 @@ class MemcacheParameters(proto.Message):
     """
 
     id = proto.Field(proto.STRING, number=1,)
-    params = proto.MapField(proto.STRING, proto.STRING, number=3)
+    params = proto.MapField(proto.STRING, proto.STRING, number=3,)
 
 
 class OperationMetadata(proto.Message):

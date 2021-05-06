@@ -375,8 +375,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.ListInstancesRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
             parent (str):
                 Required. The resource name of the instance location
@@ -458,8 +457,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.GetInstanceRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [GetInstance][google.cloud.memcache.v1beta2.CloudMemcache.GetInstance].
             name (str):
                 Required. Memcached instance resource name in the
@@ -532,8 +530,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.CreateInstanceRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [CreateInstance][google.cloud.memcache.v1beta2.CloudMemcache.CreateInstance].
             parent (str):
                 Required. The resource name of the instance location
@@ -645,8 +642,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.UpdateInstanceRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [UpdateInstance][google.cloud.memcache.v1beta2.CloudMemcache.UpdateInstance].
             update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 Required. Mask of fields to update.
@@ -745,8 +741,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.UpdateParametersRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [UpdateParameters][google.cloud.memcache.v1beta2.CloudMemcache.UpdateParameters].
             name (str):
                 Required. Resource name of the
@@ -845,8 +840,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.DeleteInstanceRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [DeleteInstance][google.cloud.memcache.v1beta2.CloudMemcache.DeleteInstance].
             name (str):
                 Required. Memcached instance resource name in the
@@ -944,8 +938,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.ApplyParametersRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [ApplyParameters][google.cloud.memcache.v1beta2.CloudMemcache.ApplyParameters].
             name (str):
                 Required. Resource name of the
@@ -1051,8 +1044,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
         Args:
             request (google.cloud.memcache_v1beta2.types.ApplySoftwareUpdateRequest):
-                The request object.
-                Request for
+                The request object. Request for
                 [ApplySoftwareUpdate][google.cloud.memcache.v1beta2.CloudMemcache.ApplySoftwareUpdate].
             instance (str):
                 Required. Resource name of the
