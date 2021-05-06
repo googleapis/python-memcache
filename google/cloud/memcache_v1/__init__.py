@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +16,6 @@
 #
 
 from .services.cloud_memcache import CloudMemcacheClient
-
 from .types.cloud_memcache import ApplyParametersRequest
 from .types.cloud_memcache import CreateInstanceRequest
 from .types.cloud_memcache import DeleteInstanceRequest
@@ -28,6 +28,7 @@ from .types.cloud_memcache import MemcacheVersion
 from .types.cloud_memcache import OperationMetadata
 from .types.cloud_memcache import UpdateInstanceRequest
 from .types.cloud_memcache import UpdateParametersRequest
+
 
 __all__ = (
     "ApplyParametersRequest",

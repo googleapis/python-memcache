@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import warnings
-from typing import Callable, Dict, Optional, Sequence, Tuple, Union
+from typing import Callable, Dict, Optional, Sequence, Tuple
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.api_core import operations_v1  # type: ignore
@@ -27,6 +29,7 @@ import grpc  # type: ignore
 
 from google.cloud.memcache_v1.types import cloud_memcache
 from google.longrunning import operations_pb2 as operations  # type: ignore
+
 from .base import CloudMemcacheTransport, DEFAULT_CLIENT_INFO
 
 
@@ -81,8 +84,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]):
-                 The hostname to connect to.
+            host (Optional[str]): The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -224,15 +226,13 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
             google.api_core.exceptions.DuplicateCredentialArgs: If both ``credentials``
               and ``credentials_file`` are passed.
         """
-
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
+        scopes = scopes or cls.AUTH_SCOPES
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
+            scopes=scopes,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -262,9 +262,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.ListInstancesRequest], cloud_memcache.ListInstancesResponse
     ]:
-        r"""Return a callable for the
-        list instances
-          method over gRPC.
+        r"""Return a callable for the list instances method over gRPC.
 
         Lists Instances in a given location.
 
@@ -290,9 +288,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def get_instance(
         self,
     ) -> Callable[[cloud_memcache.GetInstanceRequest], cloud_memcache.Instance]:
-        r"""Return a callable for the
-        get instance
-          method over gRPC.
+        r"""Return a callable for the get instance method over gRPC.
 
         Gets details of a single Instance.
 
@@ -318,9 +314,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def create_instance(
         self,
     ) -> Callable[[cloud_memcache.CreateInstanceRequest], operations.Operation]:
-        r"""Return a callable for the
-        create instance
-          method over gRPC.
+        r"""Return a callable for the create instance method over gRPC.
 
         Creates a new Instance in a given location.
 
@@ -346,9 +340,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def update_instance(
         self,
     ) -> Callable[[cloud_memcache.UpdateInstanceRequest], operations.Operation]:
-        r"""Return a callable for the
-        update instance
-          method over gRPC.
+        r"""Return a callable for the update instance method over gRPC.
 
         Updates an existing Instance in a given project and
         location.
@@ -375,9 +367,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def update_parameters(
         self,
     ) -> Callable[[cloud_memcache.UpdateParametersRequest], operations.Operation]:
-        r"""Return a callable for the
-        update parameters
-          method over gRPC.
+        r"""Return a callable for the update parameters method over gRPC.
 
         Updates the defined Memcached Parameters for an
         existing Instance. This method only stages the
@@ -406,9 +396,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def delete_instance(
         self,
     ) -> Callable[[cloud_memcache.DeleteInstanceRequest], operations.Operation]:
-        r"""Return a callable for the
-        delete instance
-          method over gRPC.
+        r"""Return a callable for the delete instance method over gRPC.
 
         Deletes a single Instance.
 
@@ -434,9 +422,7 @@ class CloudMemcacheGrpcTransport(CloudMemcacheTransport):
     def apply_parameters(
         self,
     ) -> Callable[[cloud_memcache.ApplyParametersRequest], operations.Operation]:
-        r"""Return a callable for the
-        apply parameters
-          method over gRPC.
+        r"""Return a callable for the apply parameters method over gRPC.
 
         ApplyParameters will restart the set of specified
         nodes in order to update them to the current set of
