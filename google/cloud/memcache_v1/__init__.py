@@ -24,13 +24,12 @@ from .types.cloud_memcache import Instance
 from .types.cloud_memcache import ListInstancesRequest
 from .types.cloud_memcache import ListInstancesResponse
 from .types.cloud_memcache import MemcacheParameters
+from .types.cloud_memcache import MemcacheVersion
 from .types.cloud_memcache import OperationMetadata
 from .types.cloud_memcache import UpdateInstanceRequest
 from .types.cloud_memcache import UpdateParametersRequest
-from .types.cloud_memcache import MemcacheVersion
 
 __all__ = (
-    "CloudMemcacheClient",
     "ApplyParametersRequest",
     "CreateInstanceRequest",
     "DeleteInstanceRequest",
@@ -39,8 +38,9 @@ __all__ = (
     "ListInstancesRequest",
     "ListInstancesResponse",
     "MemcacheParameters",
+    "MemcacheVersion",
     "OperationMetadata",
     "UpdateInstanceRequest",
     "UpdateParametersRequest",
-    "MemcacheVersion",
+    "CloudMemcacheClient",
 )

@@ -269,7 +269,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
         [cloud_memcache.ListInstancesRequest],
         Awaitable[cloud_memcache.ListInstancesResponse],
     ]:
-        r"""Return a callable for the list instances method over gRPC.
+        r"""Return a callable for the
+        list instances
+          method over gRPC.
 
         Lists Instances in a given location.
 
@@ -297,7 +299,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.GetInstanceRequest], Awaitable[cloud_memcache.Instance]
     ]:
-        r"""Return a callable for the get instance method over gRPC.
+        r"""Return a callable for the
+        get instance
+          method over gRPC.
 
         Gets details of a single Instance.
 
@@ -325,7 +329,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.CreateInstanceRequest], Awaitable[operations.Operation]
     ]:
-        r"""Return a callable for the create instance method over gRPC.
+        r"""Return a callable for the
+        create instance
+          method over gRPC.
 
         Creates a new Instance in a given location.
 
@@ -353,7 +359,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.UpdateInstanceRequest], Awaitable[operations.Operation]
     ]:
-        r"""Return a callable for the update instance method over gRPC.
+        r"""Return a callable for the
+        update instance
+          method over gRPC.
 
         Updates an existing Instance in a given project and
         location.
@@ -382,7 +390,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.UpdateParametersRequest], Awaitable[operations.Operation]
     ]:
-        r"""Return a callable for the update parameters method over gRPC.
+        r"""Return a callable for the
+        update parameters
+          method over gRPC.
 
         Updates the defined Memcached parameters for an existing
         instance. This method only stages the parameters, it must be
@@ -413,7 +423,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.DeleteInstanceRequest], Awaitable[operations.Operation]
     ]:
-        r"""Return a callable for the delete instance method over gRPC.
+        r"""Return a callable for the
+        delete instance
+          method over gRPC.
 
         Deletes a single Instance.
 
@@ -441,7 +453,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.ApplyParametersRequest], Awaitable[operations.Operation]
     ]:
-        r"""Return a callable for the apply parameters method over gRPC.
+        r"""Return a callable for the
+        apply parameters
+          method over gRPC.
 
         ``ApplyParameters`` restarts the set of specified nodes in order
         to update them to the current set of parameters for the
@@ -471,7 +485,9 @@ class CloudMemcacheGrpcAsyncIOTransport(CloudMemcacheTransport):
     ) -> Callable[
         [cloud_memcache.ApplySoftwareUpdateRequest], Awaitable[operations.Operation]
     ]:
-        r"""Return a callable for the apply software update method over gRPC.
+        r"""Return a callable for the
+        apply software update
+          method over gRPC.
 
         Updates software on the selected nodes of the
         Instance.
