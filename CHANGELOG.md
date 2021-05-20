@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/googleapis/python-memcache/compare/v0.3.0...v0.4.0) (2021-05-20)
+
+
+### Features
+
+* bump release level to production/stable ([#59](https://www.github.com/googleapis/python-memcache/issues/59)) ([b8d9394](https://www.github.com/googleapis/python-memcache/commit/b8d9394dd34b97ddd68f8c73a5f516ba5294a70c))
+* support self-signed JWT flow for service accounts ([2ad1bfb](https://www.github.com/googleapis/python-memcache/commit/2ad1bfbee1f847c1b150b0e1595faba63f42d768))
+
+
+### Bug Fixes
+
+* add async client to %name_%version/init.py ([2ad1bfb](https://www.github.com/googleapis/python-memcache/commit/2ad1bfbee1f847c1b150b0e1595faba63f42d768))
+
 ## [0.3.0](https://www.github.com/googleapis/python-memcache/compare/v0.2.0...v0.3.0) (2021-02-10)
 
 
