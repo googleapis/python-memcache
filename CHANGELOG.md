@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/googleapis/python-memcache/compare/v1.0.0...v1.0.1) (2021-06-19)
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-memcache/issues/1127)) ([#70](https://www.github.com/googleapis/python-memcache/issues/70)) ([f273025](https://www.github.com/googleapis/python-memcache/commit/f273025fedad32be0b766e40ab99b445f529cd13))
+
 ## [1.0.0](https://www.github.com/googleapis/python-memcache/compare/v0.3.0...v1.0.0) (2021-05-28)
 
 
