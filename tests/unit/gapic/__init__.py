@@ -13,21 +13,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from collections import OrderedDict
-from typing import Dict, Type
-
-from .base import CloudMemcacheTransport
-from .grpc import CloudMemcacheGrpcTransport
-from .grpc_asyncio import CloudMemcacheGrpcAsyncIOTransport
-
-
-# Compile a registry of transports.
-_transport_registry = OrderedDict()  # type: Dict[str, Type[CloudMemcacheTransport]]
-_transport_registry['grpc'] = CloudMemcacheGrpcTransport
-_transport_registry['grpc_asyncio'] = CloudMemcacheGrpcAsyncIOTransport
-
-__all__ = (
-    'CloudMemcacheTransport',
-    'CloudMemcacheGrpcTransport',
-    'CloudMemcacheGrpcAsyncIOTransport',
-)
