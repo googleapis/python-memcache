@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/googleapis/python-memcache/compare/v1.1.0...v1.1.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#82](https://www.github.com/googleapis/python-memcache/issues/82)) ([d4f2c96](https://www.github.com/googleapis/python-memcache/commit/d4f2c965c13c28f97bda9aa8ab570529747bd68d))
+
 ## [1.1.0](https://www.github.com/googleapis/python-memcache/compare/v1.0.0...v1.1.0) (2021-06-30)
 
 
