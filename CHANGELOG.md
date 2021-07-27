@@ -3,15 +3,15 @@
 ### [1.1.1](https://www.github.com/googleapis/python-memcache/compare/v1.1.0...v1.1.1) (2021-07-26)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#83](https://www.github.com/googleapis/python-memcache/issues/83)) ([9471485](https://www.github.com/googleapis/python-memcache/commit/94714851060def4b68ec065ae435b71ce94f41bc))
-
-
 ### Bug Fixes
 
 * **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#82](https://www.github.com/googleapis/python-memcache/issues/82)) ([d4f2c96](https://www.github.com/googleapis/python-memcache/commit/d4f2c965c13c28f97bda9aa8ab570529747bd68d))
 * enable self signed jwt for grpc ([#88](https://www.github.com/googleapis/python-memcache/issues/88)) ([0ddd8eb](https://www.github.com/googleapis/python-memcache/commit/0ddd8eb6c91b799d443e4d09a20adcd25d9ef70a))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#83](https://www.github.com/googleapis/python-memcache/issues/83)) ([9471485](https://www.github.com/googleapis/python-memcache/commit/94714851060def4b68ec065ae435b71ce94f41bc))
 
 
 ### Miscellaneous Chores
