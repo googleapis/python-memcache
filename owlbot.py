@@ -55,6 +55,12 @@ s.replace(
 )
 
 s.replace(
+  "*.rst",
+  "google-cloud-python/blob/main",
+  "google-cloud-python/blob/master"
+)
+
+s.replace(
   "CONTRIBUTING.rst",
   "kubernetes/community/blob/main",
   "kubernetes/community/blob/master"
