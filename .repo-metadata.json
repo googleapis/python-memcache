@@ -10,6 +10,6 @@
     "repo": "googleapis/python-memcache",
     "distribution_name": "google-cloud-memcache",
     "api_id": "memcache.googleapis.com",
-    "default_version": "",
+    "default_version": "v1",
     "codeowner_team": ""
 }
