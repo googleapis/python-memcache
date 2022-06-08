@@ -17,6 +17,7 @@ jobs:
       run: |
         python -m pip install --upgrade setuptools pip wheel
         python -m pip install nox
+        python -m pip install sphinx==4.0.1
     - name: Run docs
       run: |
         nox -s docs
@@ -33,6 +34,7 @@ jobs:
       run: |
         python -m pip install --upgrade setuptools pip wheel
         python -m pip install nox
+        python -m pip install sphinx==4.0.1
     - name: Run docfx
       run: |
         nox -s docfx
