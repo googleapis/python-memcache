@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/googleapis/python-memcache/compare/v0.3.1...v0.3.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf<4.0.0 on v0 branch ([#188](https://github.com/googleapis/python-memcache/issues/188)) ([5993a41](https://github.com/googleapis/python-memcache/commit/5993a41fc8c90435653722ac4ef3ef2845659927))
+
 ### [0.3.1](https://github.com/googleapis/python-memcache/compare/v0.3.0...v0.3.1) (2022-04-01)
 
 
