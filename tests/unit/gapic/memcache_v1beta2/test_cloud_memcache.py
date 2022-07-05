@@ -3094,7 +3094,6 @@ def test_cloud_memcache_transport_auth_adc(transport_class):
     [
         transports.CloudMemcacheGrpcTransport,
         transports.CloudMemcacheGrpcAsyncIOTransport,
-        transports.CloudMemcacheRestTransport,
     ],
 )
 def test_cloud_memcache_transport_auth_gdch_credentials(transport_class):
