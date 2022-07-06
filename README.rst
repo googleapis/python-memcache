@@ -3,7 +3,7 @@ Python Client for Cloud Memorystore for Memcached API
 
 |stable| |pypi| |versions|
 
-`Cloud Memorystore for Memcached API`_: 
+`Cloud Memorystore for Memcached API`_: is a fully-managed in-memory data store service for Memcache.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
