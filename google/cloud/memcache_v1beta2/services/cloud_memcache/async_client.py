@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 
 from google.api_core import exceptions as core_exceptions
 from google.api_core import gapic_v1
@@ -184,9 +194,9 @@ class CloudMemcacheAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, CloudMemcacheTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the cloud memcache client.
@@ -230,11 +240,11 @@ class CloudMemcacheAsyncClient:
 
     async def list_instances(
         self,
-        request: Union[cloud_memcache.ListInstancesRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.ListInstancesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListInstancesAsyncPager:
         r"""Lists Instances in a given location.
@@ -267,7 +277,7 @@ class CloudMemcacheAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.ListInstancesRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.ListInstancesRequest, dict]]):
                 The request object. Request for
                 [ListInstances][google.cloud.memcache.v1beta2.CloudMemcache.ListInstances].
             parent (:class:`str`):
@@ -347,11 +357,11 @@ class CloudMemcacheAsyncClient:
 
     async def get_instance(
         self,
-        request: Union[cloud_memcache.GetInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.GetInstanceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_memcache.Instance:
         r"""Gets details of a single Instance.
@@ -383,7 +393,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.GetInstanceRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.GetInstanceRequest, dict]]):
                 The request object. Request for
                 [GetInstance][google.cloud.memcache.v1beta2.CloudMemcache.GetInstance].
             name (:class:`str`):
@@ -449,13 +459,13 @@ class CloudMemcacheAsyncClient:
 
     async def create_instance(
         self,
-        request: Union[cloud_memcache.CreateInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.CreateInstanceRequest, dict]] = None,
         *,
-        parent: str = None,
-        instance_id: str = None,
-        resource: cloud_memcache.Instance = None,
+        parent: Optional[str] = None,
+        instance_id: Optional[str] = None,
+        resource: Optional[cloud_memcache.Instance] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Creates a new Instance in a given location.
@@ -499,7 +509,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.CreateInstanceRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.CreateInstanceRequest, dict]]):
                 The request object. Request for
                 [CreateInstance][google.cloud.memcache.v1beta2.CloudMemcache.CreateInstance].
             parent (:class:`str`):
@@ -604,12 +614,12 @@ class CloudMemcacheAsyncClient:
 
     async def update_instance(
         self,
-        request: Union[cloud_memcache.UpdateInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.UpdateInstanceRequest, dict]] = None,
         *,
-        update_mask: field_mask_pb2.FieldMask = None,
-        resource: cloud_memcache.Instance = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
+        resource: Optional[cloud_memcache.Instance] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Updates an existing Instance in a given project and
@@ -652,7 +662,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.UpdateInstanceRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.UpdateInstanceRequest, dict]]):
                 The request object. Request for
                 [UpdateInstance][google.cloud.memcache.v1beta2.CloudMemcache.UpdateInstance].
             update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
@@ -741,13 +751,13 @@ class CloudMemcacheAsyncClient:
 
     async def update_parameters(
         self,
-        request: Union[cloud_memcache.UpdateParametersRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.UpdateParametersRequest, dict]] = None,
         *,
-        name: str = None,
-        update_mask: field_mask_pb2.FieldMask = None,
-        parameters: cloud_memcache.MemcacheParameters = None,
+        name: Optional[str] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
+        parameters: Optional[cloud_memcache.MemcacheParameters] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Updates the defined Memcached parameters for an existing
@@ -786,7 +796,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.UpdateParametersRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.UpdateParametersRequest, dict]]):
                 The request object. Request for
                 [UpdateParameters][google.cloud.memcache.v1beta2.CloudMemcache.UpdateParameters].
             name (:class:`str`):
@@ -880,11 +890,11 @@ class CloudMemcacheAsyncClient:
 
     async def delete_instance(
         self,
-        request: Union[cloud_memcache.DeleteInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.DeleteInstanceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Deletes a single Instance.
@@ -920,7 +930,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.DeleteInstanceRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.DeleteInstanceRequest, dict]]):
                 The request object. Request for
                 [DeleteInstance][google.cloud.memcache.v1beta2.CloudMemcache.DeleteInstance].
             name (:class:`str`):
@@ -1006,13 +1016,13 @@ class CloudMemcacheAsyncClient:
 
     async def apply_parameters(
         self,
-        request: Union[cloud_memcache.ApplyParametersRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.ApplyParametersRequest, dict]] = None,
         *,
-        name: str = None,
-        node_ids: Sequence[str] = None,
-        apply_all: bool = None,
+        name: Optional[str] = None,
+        node_ids: Optional[MutableSequence[str]] = None,
+        apply_all: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""``ApplyParameters`` restarts the set of specified nodes in order
@@ -1050,7 +1060,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.ApplyParametersRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.ApplyParametersRequest, dict]]):
                 The request object. Request for
                 [ApplyParameters][google.cloud.memcache.v1beta2.CloudMemcache.ApplyParameters].
             name (:class:`str`):
@@ -1061,7 +1071,7 @@ class CloudMemcacheAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            node_ids (:class:`Sequence[str]`):
+            node_ids (:class:`MutableSequence[str]`):
                 Nodes to which the instance-level
                 parameter group is applied.
 
@@ -1148,13 +1158,15 @@ class CloudMemcacheAsyncClient:
 
     async def apply_software_update(
         self,
-        request: Union[cloud_memcache.ApplySoftwareUpdateRequest, dict] = None,
+        request: Optional[
+            Union[cloud_memcache.ApplySoftwareUpdateRequest, dict]
+        ] = None,
         *,
-        instance: str = None,
-        node_ids: Sequence[str] = None,
-        apply_all: bool = None,
+        instance: Optional[str] = None,
+        node_ids: Optional[MutableSequence[str]] = None,
+        apply_all: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation_async.AsyncOperation:
         r"""Updates software on the selected nodes of the
@@ -1191,7 +1203,7 @@ class CloudMemcacheAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.memcache_v1beta2.types.ApplySoftwareUpdateRequest, dict]):
+            request (Optional[Union[google.cloud.memcache_v1beta2.types.ApplySoftwareUpdateRequest, dict]]):
                 The request object. Request for
                 [ApplySoftwareUpdate][google.cloud.memcache.v1beta2.CloudMemcache.ApplySoftwareUpdate].
             instance (:class:`str`):
@@ -1202,7 +1214,7 @@ class CloudMemcacheAsyncClient:
                 This corresponds to the ``instance`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            node_ids (:class:`Sequence[str]`):
+            node_ids (:class:`MutableSequence[str]`):
                 Nodes to which we should apply the
                 update to. Note all the selected nodes
                 are updated in parallel.

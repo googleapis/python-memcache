@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -62,7 +73,7 @@ class CloudMemcacheClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[CloudMemcacheTransport]:
         """Returns an appropriate transport class.
 
@@ -356,7 +367,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, CloudMemcacheTransport, None] = None,
+        transport: Optional[Union[str, CloudMemcacheTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -454,11 +465,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def list_instances(
         self,
-        request: Union[cloud_memcache.ListInstancesRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.ListInstancesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListInstancesPager:
         r"""Lists Instances in a given location.
@@ -571,11 +582,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def get_instance(
         self,
-        request: Union[cloud_memcache.GetInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.GetInstanceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> cloud_memcache.Instance:
         r"""Gets details of a single Instance.
@@ -673,13 +684,13 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def create_instance(
         self,
-        request: Union[cloud_memcache.CreateInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.CreateInstanceRequest, dict]] = None,
         *,
-        parent: str = None,
-        instance_id: str = None,
-        resource: cloud_memcache.Instance = None,
+        parent: Optional[str] = None,
+        instance_id: Optional[str] = None,
+        resource: Optional[cloud_memcache.Instance] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new Instance in a given location.
@@ -828,12 +839,12 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def update_instance(
         self,
-        request: Union[cloud_memcache.UpdateInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.UpdateInstanceRequest, dict]] = None,
         *,
-        update_mask: field_mask_pb2.FieldMask = None,
-        resource: cloud_memcache.Instance = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
+        resource: Optional[cloud_memcache.Instance] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates an existing Instance in a given project and
@@ -965,13 +976,13 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def update_parameters(
         self,
-        request: Union[cloud_memcache.UpdateParametersRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.UpdateParametersRequest, dict]] = None,
         *,
-        name: str = None,
-        update_mask: field_mask_pb2.FieldMask = None,
-        parameters: cloud_memcache.MemcacheParameters = None,
+        name: Optional[str] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
+        parameters: Optional[cloud_memcache.MemcacheParameters] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the defined Memcached parameters for an existing
@@ -1104,11 +1115,11 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def delete_instance(
         self,
-        request: Union[cloud_memcache.DeleteInstanceRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.DeleteInstanceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes a single Instance.
@@ -1230,13 +1241,13 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def apply_parameters(
         self,
-        request: Union[cloud_memcache.ApplyParametersRequest, dict] = None,
+        request: Optional[Union[cloud_memcache.ApplyParametersRequest, dict]] = None,
         *,
-        name: str = None,
-        node_ids: Sequence[str] = None,
-        apply_all: bool = None,
+        name: Optional[str] = None,
+        node_ids: Optional[MutableSequence[str]] = None,
+        apply_all: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""``ApplyParameters`` restarts the set of specified nodes in order
@@ -1285,7 +1296,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            node_ids (Sequence[str]):
+            node_ids (MutableSequence[str]):
                 Nodes to which the instance-level
                 parameter group is applied.
 
@@ -1372,13 +1383,15 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
 
     def apply_software_update(
         self,
-        request: Union[cloud_memcache.ApplySoftwareUpdateRequest, dict] = None,
+        request: Optional[
+            Union[cloud_memcache.ApplySoftwareUpdateRequest, dict]
+        ] = None,
         *,
-        instance: str = None,
-        node_ids: Sequence[str] = None,
-        apply_all: bool = None,
+        instance: Optional[str] = None,
+        node_ids: Optional[MutableSequence[str]] = None,
+        apply_all: Optional[bool] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates software on the selected nodes of the
@@ -1426,7 +1439,7 @@ class CloudMemcacheClient(metaclass=CloudMemcacheClientMeta):
                 This corresponds to the ``instance`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            node_ids (Sequence[str]):
+            node_ids (MutableSequence[str]):
                 Nodes to which we should apply the
                 update to. Note all the selected nodes
                 are updated in parallel.
