@@ -27,11 +27,17 @@ from .types.cloud_memcache import (
     Instance,
     ListInstancesRequest,
     ListInstancesResponse,
+    LocationMetadata,
+    MaintenancePolicy,
+    MaintenanceSchedule,
     MemcacheParameters,
     MemcacheVersion,
     OperationMetadata,
+    RescheduleMaintenanceRequest,
     UpdateInstanceRequest,
     UpdateParametersRequest,
+    WeeklyMaintenanceWindow,
+    ZoneMetadata,
 )
 
 __all__ = (
@@ -44,9 +50,15 @@ __all__ = (
     "Instance",
     "ListInstancesRequest",
     "ListInstancesResponse",
+    "LocationMetadata",
+    "MaintenancePolicy",
+    "MaintenanceSchedule",
     "MemcacheParameters",
     "MemcacheVersion",
     "OperationMetadata",
+    "RescheduleMaintenanceRequest",
     "UpdateInstanceRequest",
     "UpdateParametersRequest",
+    "WeeklyMaintenanceWindow",
+    "ZoneMetadata",
 )
